@@ -87,91 +87,47 @@ Click **Create deployment**. Remember to make a note of the password that gets c
 
 ## Launching Kibana
 
-The I/O Template will deploy an instance of Kibana by default. Kibana is [Your window into the Elastic Stack](https://www.elastic.co/kibana) where
+The I/O Template will deploy an instance of Kibana by default. Kibana is [your window into the Elastic Stack](https://www.elastic.co/kibana), where
 building and exploring dashboards gives you the ability, and freedom, to bring insights into the hands who need them. Remember the age old saying, “a picture says a thousand words?” Well, Kibana is that same picture, “worth a thousand log lines.”
 
-To launch Kibana, select the **‘Launch**’ link within your Deployment page next to Kibana (alternatively, the link is available within the Kibana sub-section under your deployment). To begin with, you can login with your `elastic` username and password (created when you first created your deployment).
+To launch Kibana, select the **Launch** link within your Deployment page next to Kibana (alternatively, the link is available within the Kibana sub-section under your deployment). To begin with, you can log in with your `elastic` username and password (created when you first created your deployment).
 
-Getting started looking at real world data is as simple as clicking the **Try our sample data**, which not only loads the sample data but also sample dashboards and more. This option is great to get familiar with Kibana and its features, and immediately see the power of Kibana, where everyone can see the benefits in creating, customizing and utilizing all the amazing dashboards containing histograms, graphs, pie charts, maps and more!
+Getting started looking at real world data is as simple as clicking **Try our sample data**, which not only loads the sample data, but also sample dashboards and more. This option is great to get familiar with Kibana and its features, and immediately see the power of Kibana, where everyone can see the benefits in creating, customizing and utilizing all the amazing dashboards containing histograms, graphs, pie charts, maps and more!
 
 Check out this wonderful [Getting Started with Kibana](https://www.elastic.co/webinars/getting-started-kibana) video!
 
-The purpose of this tutorial is to get you ingesting your own data to be searched and visualized in Kibana, and that is what we will proceed with doing.
+The purpose of this tutorial is to get you ingesting your own data that you can search and visualize  in Kibana, and that is what we will proceed with doing.
 
 ## Ingesting your data into Elasticsearch and visualizing it in Kibana
 
-Assuming you had taken the advice and watched some of the great Getting Started videos, especially the Getting Started with Kibana video, and got excited about what you saw. We can get you looking at your own data in the same way, by following the rest of this tutorial.
+Assuming you had taken the advice and watched some of the great Getting Started videos, especially the Getting Started with Kibana video, and got excited about what you saw. We can get you exploring your own data in the same way, by following the rest of this tutorial.
 
-What kinds of data matters to you? Are you more interested in the performance metrics for the application, JVM, container, or cloud platform? Do you need to analyze thousands of lines of log files from many different kinds of sources, all in one location just to find out why your users cannot connect, or why an app is running slow, or not running at all?
+What types of data matters to you? Are you most interested in the performance metrics for the application, JVM, container, or cloud platform? Do you need to analyze thousands of lines of log files from many different kinds of sources, all in one location just to find out why your users cannot connect, or why an app is running slow, or not running at all?
 
-The answers are centralized in Kibana.
+You can find answers to these questions and more in Kibana.
 
 ![Kibana Web Traffic Dashboard](media/java-get-started-with-elasticsearch/kibana-overview.png)
 
-> [!TIP]
-> It helps to have specific goals in mind when setting up Elasticsearch, so start with some of the basics. Since deploying the **I/O Template** comes with the [Elastic APM](https://www.elastic.co/guide/en/apm/get-started/7.8/index.html) app, you can take advantage of it for your Java development environment with minimal configuration.
+### Placeholder for offering a secondary option for ingesting with Elastic Agent per Gail….
 
-### Elastic APM Java Agent
-
-For a Java developer, there is nothing easier than utilizing the [Elastic APM Java Agent](https://www.elastic.co/guide/en/apm/agent/java/1.x/index.html) to get relevant data into Kibana. The APM Java Agent is an out-of-the-box bytecode instrumentation tool leveraging the JVM to automatically measure the performance of applications, including support for popular frameworks such as Servlet API, Spring MVC, and Spring Boot. There is also an API enabling an unlimited number of custom instrumentations.
-
-Getting relevant data into Kibana begins by installing the **APM Java Agent** through the Kibana interface.
-
-From the Home screen, simply click **Add APM** where you will see a number of APM Agents available.
-
-> [!NOTE]
-> If you had selected a different template where the APM Server was not enabled by default, there will be a note explaining what to do, which is simply to enable it in the deployment settings, i.e. edit the deployment where you created it originally and where you launched Kibana. Same can be said if you wish to enable machine learning.
-
-Select the **Java** agent tab.
-
-Deploying agents through Kibana means that you have all the necessary instructions, in one place, making the deployment and configuration straightforward and simple.
-
-You will download the agent jar from Maven Central, onto your application host, and then start it with a properties script, similar to what is depicted below. Don’t forget to change the service name **my-application** which Kibana will pickup and use as the named service within Kibana, as well as the root application package **org.example** if applicable, as well as the actual compiled jar file name.
-
-> [!TIP]
-> There are helpful links throughout the interface providing more instructions should you need. The connectivity url and token have already been correctly added for you, ensuring the connection to the cloud deployment of Elasticsearch is successful. The only thing that you need to ensure, is that the agent monitors the correct service.
-
-
-```Agent configuration example
-java -javaagent:/path/to/elastic-apm-agent-<version>.jar \
-    -Delastic.apm.service_name=my-application \
-    -Delastic.apm.server_urls=https://ffca87c25.apm.eastus2.azure.elastic-cloud.com:443 \
-    -Delastic.apm.secret_token=yHWPquEpa3x0bruhqP \
-    -Delastic.apm.application_packages=org.example \
-    -jar my-application.jar
-```
-
-> [!TIP]
-> Rather than pasting this entire configuration example into your command line, you can use a configuration file named **elasticapm.properties**. Please refer to the [APM Java Agent configuration reference](https://www.elastic.co/guide/en/apm/agent/java/1.x/configuration.html)  for more details.
-
-Once the application and agent have been started, click **Load Kibana objects** and then **Launch APM**.
-
-There are main tabs are Services, Traces, and a Service Map where you can visually see how services are connected, and also see which may be having issues depicted by alert colors. In the case of the following screenshot, an anomaly detection alert, established through machine learning features, detected unusual behavior in the average transaction duration.
-
-![Service Map Anomaly Detection](media/java-get-started-with-elasticsearch/service-map-error.png)
-
-Clicking a java agent service will allow you to analyze a number of metrics, such as transaction details, error details including the actual error message, and JVM performance data, such as heap usage and thread counts, as seen in the following screenshot.
-
-![JVM Service Performance Dashboard](media/java-get-started-with-elasticsearch/jvm-perf-dashboard.png)
-
-### Installing Filebeat to ingesting logs
+### Installing Filebeat to ingest logs
 
 Throughout your environment, we can assume there are tons of threads in logs, spread across many different applications, servers, and locations with different format types and even possibly languages that a person in your position must analyze. It is not practical, nor scalable, to try and analyze them by logging onto each system and to parse through those 10s of thousands of lines of text. Rather, there is a much more efficient method to analyze such large amounts of log file data, provided at no additional cost. One in particular is [Filebeat](https://www.elastic.co/beats/filebeat), Elastic’s lightweight data shippers for logs.
 
 ![Logs Analysis ](media/java-get-started-with-elasticsearch/log-analysis.png)
 
-Filebeat is one of the many open platform [Beats](https://www.elastic.co/beats) Elastic offers out-of-the-box, ready to help ingesting logs and are [container](https://www.elastic.co/docker-kubernetes-container-monitoring) and cloud-ready. Beats are designed by Elastic to understand your applications, sending relevant the data directly into Elasticsearch, or to [Logstash](https://www.elastic.co/logstash) for further processing. With Logstash, you can apply many data manipulation techniques, such as applying transformations, to data before beingit is indexed in Elasticsearch. There is also a large amount of [community Beats](https://www.elastic.co/guide/en/beats/libbeat/7.8/community-beats.html) which means that most likely, anything you may need has already been developed, or offers a great starting point to build off of.
+Filebeat is one of the many open platform [Beats](https://www.elastic.co/beats) Elastic offers out-of-the-box, ready to help ingesting logs and are [container](https://www.elastic.co/docker-kubernetes-container-monitoring) and cloud-ready. Beats are designed by Elastic to understand your applications, sending relevant data directly into Elasticsearch., or to [Logstash](https://www.elastic.co/logstash) for further processing. With Logstash, you can apply many data manipulation techniques, such as applying transformations, to data before being indexed in Elasticsearch. There is also a large amount of [community Beats](https://www.elastic.co/guide/en/beats/libbeat/7.8/community-beats.html) which means that most likely, anything you may need has already been developed, or offers a great starting point to build off of.
 
-Configuring Filebeat, as with the APM Java Agent, begins within Kibana where clear instructions are depicted. The setup depends on your system, but essentially consists of downloading, configuring the **filebeat.yml** file, which essentially consists of setting what to collect, and where they need to go, and then running the setup commands. The process generally takes under five minutes.
+Configuring Filebeat begins within Kibana, where clear instructions are depicted. The setup depends on your system, but essentially consists of downloading, configuring the **filebeat.yml** file, which consists of setting what to collect, and where they need to go, and then running the setup commands. The process generally takes under five minutes.
 
-Additionally, you may want to enable modules relevant to your environment, such as if you are running Nginx or MySQL. There is also a **Systems Logs module** which you can enable upon installing Filebeat. Check out all the out-of-the-box types of [Elastic Integrations](https://www.elastic.co/integrations). Many come with pre-built dashboards and visualizations, getting you up and running even faster!  
+Additionally, you may want to enable modules relevant to your environment, such as if you are running Nginx or MySQL. There is also a **Systems Logs module**, which you can enable upon installing Filebeat. Check out all the out-of-the-box types of [Elastic Integrations](https://www.elastic.co/integrations). Many come with pre-built dashboards and visualizations, getting you up and running even faster!  
 
 > [!NOTE]
-> Filebeat guarantees at-least-once delivery and from then on keeps track of the last lines sent by utilizing [harvesters](https://www.elastic.co/guide/en/beats/filebeat/7.8/how-filebeat-works.html#harvester). There is a *registry* which rebuilds the state should Filebeat get restarted. If that registry gets corrupted or deleted, then all the logs will need to be re-sent to Elasticsearch.
+> Filebeat guarantees at-least-once delivery and from then on keeps track of the last lines sent by utilizing [harvesters](https://www.elastic.co/guide/en/beats/filebeat/7.8/how-filebeat-works.html#harvester). There is a *registry* that rebuilds the state should Filebeat get restarted. If that registry gets corrupted or deleted, then all the logs will need to be re-sent to Elasticsearch.
 
 We will install Filebeat along with adding a system log monitoring module. Once Filebeat is installed, any of the modules that ship with it can be enabled by running a few simple commands. For more detailed instructions, please visit the [Getting Started with Filebeat](https://www.elastic.co/guide/en/beats/filebeat/7.8/filebeat-getting-started.html) reference guide.
 
-Click **Add log data** from the Kibana homemain page.
+From the Home page, click **Add log data**.
 
 Choose **System logs**.
 
@@ -180,9 +136,9 @@ Choose **System logs**.
 Choose your application host’s operating system to follow the instructions.
 
 > [!IMPORTANT]
-> During the second step, we will want to make one additional configuration change to the *filebeat.yml* file in order to also collect the relevant log datafiles you wish to import into Kibana.
+> During the second step, we will want to make one additional configuration change to the *filebeat.yml* file in order to also collect the relevant log data you wish to import into Kibana.
 
-In order to make athe connection between the application server and Elasticsearch, you must set two variables, the `cloud.id`, which has been provided, and the `cloud.auth`, requiring you to just modify the &lt;password&gt;.
+In order to make a connection between the application server and Elasticsearch, you must set two variables, the `cloud.id`, which has been provided, and the `cloud.auth`, requiring you to just modify the &lt;password&gt;.
 
 > [!IMPORTANT]
 > That password is the same one used to launch Kibana, so if you change that password, all agents and modules will need to be updated.
@@ -217,18 +173,26 @@ The [Metricbeat System module](https://www.elastic.co/guide/en/beats/metricbeat/
 
 As with the Filebeat system and log module, the Metricbeat system module comes with a predefined dashboard, which means all you have to do is configure the module and voilà, you have a beautiful set of visualizations. What is more is that Kibana will bring the two sets of data together, building on the true benefit of having a unified visibility across your entire ecosystem known as [Elastic Observability](https://www.elastic.co/observability).  
 
-From the Kibana Home page, easily naviaged by clicking the Elastic :::image type="icon" source="media/java-get-started-with-elasticsearch/es-icon.png":::icon
+Clicking the Elastic :::image type="icon" source="media/java-get-started-with-elasticsearch/es-icon.png"::: icon to navigate to the Kibana Home page.
+
+Click **Add metric data**.
+
+Choose **System metrics**.
+
+![Adding System Logs](media/java-get-started-with-elasticsearch/add-sys-metrics.png)
+
+Choose your application host’s operating system and follow the instructions. The basics are the same for the Filebeat modules, where you will download, install and then configure the metricbeat.yml file with the appropriate settings such as `cloud.id` and `cloud.auth`.
 
 ## Viewing the ingested data in Kibana
 
 ### Logs
 
-A developer will be very interested in data log analysis, during the development process as well as during run-time. On the left navigation menu, click **Logs** under Observability. This is one area where logs are centralized and visualized, and can even be streamed in real time by clicking on **Stream live** in the upper right side of the screen. Query terms can be searched and/or highlighted, and the Timepicker can be customized.
+A developer will be very interested in data log analysis, during the development process as well as during run-time. On the side navigation, find the Observability section, and click **Logs**. This is one area where logs are centralized and visualized, and can even be streamed in real time by clicking on **Stream live** in the upper right side of the screen. Query terms can be searched using [Kibana Query Language](https://www.elastic.co/guide/en/kibana/7.8current/kuery-query.html) or plain EnglishThe time filter can be customized and term can be highlighted.
 
 > [!NOTE]
-> Filebeat provides a very standard index pattern that may not be appropriate for all data ingest types. In Logs, you can change the index pattern for example, if the data does not have a standard timestamp which is used for sorting by clicking [Settings](https://www.elastic.co/guide/en/logs/guide/7.8/configure-logs-source.html).
+> Filebeat provides a default index pattern, a definition table Elasticsearch uses within Kibana for the data as it is ingested and indexed to be searched by field types. That default index pattern may not be appropriate for all data ingest types. In Logs, you can change the index pattern, for example, if the data does not have a standard timestamp which is used for sorting by clicking [Settings](https://www.elastic.co/guide/en/logs/guide/7.8/configure-logs-source.html).
 
-Please start by searching for a particular event, such as errors, by entering **mozilla** in the query bar, or just typing any term as  Notice the log histogram on the right side, an indication of when log entries were ingested. This can be helpful to see from a high level, when a large number of events took place.
+Please start by searching for a particular event, such as errors, by entering **mozilla** in the query bar, or just typing any term. as  Notice the log histogram on the right side, an indication of when log entries were ingested. This can be helpful to see from a high level, when a large number of logging events took place.
 
 View more details by clicking the **Log line details**.
 
@@ -236,21 +200,83 @@ View more details by clicking the **Log line details**.
 
 ### Discover
 
-Discover is the perfect Kibana app offering users who wish to begin creating relevant visualizations which represent the message data alone in its raw format cannot. Before using Discover an [index pattern](https://www.elastic.co/guide/en/kibana/7.8/index-patterns.html) must be created. Fortunately for us, Filebeat provides a basic indexing pattern we can build off of, so we are not having to start from scratch.
+Discover offers users the ability to create relevant visualizations representing the message data, which alone in its raw format cannot easily be interpreted.
+
+Before using Discover an [index pattern](https://www.elastic.co/guide/en/kibana/7.8/index-patterns.html) must be created. Fortunately for us, Filebeat provides a basic index pattern we can build off of, so we are not having to start from scratch, but the process is very straightforward. [Our user guides provide more info on creating index patterns](https://www.elastic.co/guide/en/kibana/7.9/index-patterns.html). .
 
 > [!TIP]
-> To get started with Discover and other visualizations, you can take advantage of the [sample data set](https://www.elastic.co/guide/en/kibana/7.8/getting-started.html#get-data-in) that comes with extensive index patterns, visualizations and dashboards.
+> To get started with Discover and other visualizations, you can take advantage of the [sample data set](https://www.elastic.co/guide/en/kibana/7.8/getting-started.html#get-data-in) that comes with built-in index patterns, visualizations and dashboards. They are a wonderful way to Get Started with Elasticsearch.
 
 ![Adding sample data](media/java-get-started-with-elasticsearch/add-sample-data.png)
 
 Within Discover you can see an ingest of data. Take advantage of the [time filter](https://www.elastic.co/guide/en/kibana/7.8/set-time-filter.html) to expand or narrow the time range.
 
+> [!TIP]
+> By default, the time filter is set to the last 15 minutes, therefore you may need to adjust it to a larger time frame if you do not see any data.
 
-### System logs
+Make sure that you are able to bring in different data indexes by selecting the **Change Index Pattern** dropdown. For example, in the screenshot you can see that **filebeat*** is selected.
 
-Please do notice the various visualizations that come out-of-the-box in dashboards for Syslog, Sudo commands, SSH logins and New users and groups. To visualize from the Kibana Homemain page, click on *Dashboards** and search for *sys*. Try it out by running a few sudo commands on your system with Filebeat configured, or connecting with SSH including throwing in a bad credential, looking at their respective dashboards.
+![Changing Index Patterns](media/java-get-started-with-elasticsearch/change-index-pattern.png)
+
+Notice the various available fields. Because log files are very different, creating customized index patterns will be something advantageous to do, however, since we have a good baseline to work from, since we have installed the filebeat system module, we can utilize a few known fields sure to be similar and helpful for exploring data in a relevant way.
+
+We will show you how to filter down data to be able to visualize what is important for you.
+
+Scroll down to where it says **host.os.platform** and then click **Add**, followed by **process.name** and finally **message**.
+
+What you are now left with is *filtered* data that makes it easy to determine what is going on with each system based on platform and relevant service.
+
+Now, click on **process.name** where it will then expand showing you various processes running. Choose one by, and clicking the plus sign to the right. This will filter even more, providing perhaps an indication of what that process may be involved with. Clicking the minus sign does not remove the filter, rather, it is a logical operator NOT and will prevent what is selectedany of those services from displaying; a suppression of sorts.
+
+If there is not a process that you would like to investigate is not listed, as only the top five are displayed, simply utilize the **Add filter** function.
+
+Click **Add filter** under the search bar.
+
+Enter **process.name** for the field then be sure and click the name once it is displayed.
+
+Select **is** for the operator.
+
+Select a value such as **sudo**. This is a great value to search and filter for when needing to know how people are using sudo credentials.
+
+Click **Save**.
+
+To add a little more insight for sudo, remove **message** and add **host.name** and **system.auth.sudo.command**. You can expand the entry to gain more information in Table and JSON formats.
 
 > [!TIP]
-> Don’t see anything new, be sure to click **Refresh** in the upper right side of the screen, or set the refresh rate by clicking the calendar icon just to the left of the refresh button.
+>  You can move various columns by hovering your mouse over the column name.
 
-## Enable some useful troubleshooting graphs and logs in Kibana
+Since we do not know what specific application logs you have ingested, or plan to ingest, the steps above should be able to be translated into whatever data explorations you wish to have. Your journey is just beginning, and we encourage you to take advantage of the [Free Fundamentals training](https://www.elastic.co/training/free#quick-starts) such as [Kibana Fundamentals](https://www.elastic.co/training/kibana-fundamentals).   
+
+### Kibana Lens
+
+You have learned how to shape data with Discover, providing a more relevant search experience. Let us now jump into **shaping** your data with [Kibana Lens](https://www.elastic.co/guide/en/kibana/7.8/lens.html). Lens is an amazing feature of Kibana that allows you to build amazingly rich visualizations by a simple drag-n-drop method. Lens is also very intelligent in that it understands the data you are trying to work with and offers suggestive input, greatly increasing your productivity and efficiency.
+
+From Kibana Home, click **Visualize**.
+
+Click **Create visualizations**.
+
+> [!TIP]
+> Feeling a bit nervous about creating your own visualizations? Check out the out-of-the-box visualizations that come with the Beats you have already installed and configured, such as "SSH login attempts [Filebeat System] ECS."
+
+Notice the different kinds of visualizations that you can create such as area, data tables, heat maps, bar and line graphs, pie charts and more!
+
+Click **Go to Lens**, the new intuitive way to create visualizations.
+
+Make sure to have selected the **filebeat-*** index pattern.
+
+Let us start with some basics. Drag and drop **@timestamp**. You should already see something, and it may just be one or two long vertical bars. Remember that you may need to adjust the time filter, which can be done by dragging your mouse over the area you want to zoom into.
+
+Next drag and drop **process.name**.
+
+You should already start to see the benefits of what this tool can do. If you do not see enough data, simply expand the timeframe.
+
+You can also change the chart type by either clicking on a suggestion Lens provides, or by selecting a new visualization type from the drop down where it shows the current type on the right side.  
+
+### Dashboard
+
+Please do notice the various visualizations that come out-of-the-box in dashboards for Syslog, Sudo commands, SSH logins and New users and groups.
+
+From Kibana Home, click on **Dashboards** and search for *sys*. Try it out by running a few sudo commands on your system with Filebeat configured, or connecting with SSH including throwing in a bad credential, looking at their respective dashboards.
+
+> [!TIP]
+> Don’t see anything new, be sure to click **Refresh** in the upper right side of the screen, or set the refresh rate by clicking the calendar icon just to the left of the Refresh button.
