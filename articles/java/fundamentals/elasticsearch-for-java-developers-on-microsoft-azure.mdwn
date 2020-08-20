@@ -1,4 +1,4 @@
- ---
+---
 title: Elasticsearch for Java Developers hosted on Azure Overview
 description: Integrating Elasticsearch Service on Microsoft Azure for Java developers.
 author: Aaron Schifman (Elastic)
