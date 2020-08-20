@@ -1,0 +1,272 @@
+ ---
+title: Elasticsearch for Java Developers hosted on Azure Overview
+description: Integrating Elasticsearch Service on Microsoft Azure for Java developers.
+author: Aaron Schifman (Elastic)
+manager: Craig Griffin (Elastic)
+ms.topic: Overview
+ms.date: August 2020
+---
+# Elasticsearch Service for Java developers running on Microsoft Azure
+This document presents an overview of Elasticsearch Service hosted on Microsoft Azure, focused on the Java developer audience. 
+
+Expect to understand what Elasticsearch is and why deploying it on Microsoft Azure is the quickest way of spinning up an Elasticsearch cluster, rather than deploying a self-managed environment. This should matter to a Java developer because Java developers are more interested in spending their time developing and enhancing their applications, rather than on infrastructure management. 
+
+If you are already familiar with deploying an Elasticsearch cluster, keep reading, you will certainly find it very useful. This overview identifies and articulates various benefits applicable for Java developers. At various times, details around the various out-of-the-box solutions are discussed, such as ingesting data and how powerful Kibana is, providing critical insight into the environment both during development and at run-time.
+## Elasticsearch Features
+Elasticsearch is a distributed, RESTful search and analytics engine that Java developers running on Azure, can take advantage of, including many of the following features.
+ 
+[Enterprise Search](https://www.elastic.co/enterprise-search) - Search everything, anywhere
+[Observability](https://www.elastic.co/observability) - Unified visibility across your entire ecosystem
+[Security](https://www.elastic.co/security) - Unified protection for everyone
+[Elastic Stack](https://www.elastic.co/elastic-stack) - The core products: Elasticsearch, Kibana, Beats, and Logstash
+[Machine Learning](https://www.elastic.co/what-is/elasticsearch-machine-learning) - Find anomalies, forecast trends, and identify areas of interest 
+Audit data using [Auditbeat](https://www.elastic.co/products/beats/auditbeat) 
+Log files using [Filebeat](https://www.elastic.co/products/beats/filebeat) 
+Cloud data using [Functionbeat](https://www.elastic.co/products/beats/functionbeat) 
+Availability using [Heartbeat](https://www.elastic.co/products/beats/heartbeat) 
+Systemd journals using [Journalbeat](https://www.elastic.co/downloads/beats/journalbeat) 
+Metrics using [Metricbeat](https://www.elastic.co/products/beats/metricbeat) 
+Network traffic using [Packetbeat](https://www.elastic.co/products/beats/packetbeat) 
+Windows event logs using [Winlogbeat](https://www.elastic.co/products/beats/winlogbeat) 
+
+Need a single, unified way to add monitoring for logs, metrics, and other types of data to each host? Look at ingest management using [Elastic Agent](https://www.elastic.co/guide/en/ingest-management/7.9/ingest-management-overview.html).
+
+Refer to the official Elastic [Hosted Elasticsearch on Microsoft Azure](https://www.elastic.co/azure) landing page for more details.
+
+Open source solutions optimized for your use cases, including industry-leading service, monitoring, and support from both Elastic and Azure. Get automatic backups, upgrades and the latest security patches with little downtime or disruptions.
+
+Check out all the [free training](https://www.elastic.co/training) opportunities!
+## Create deployments in just minutes on Microsoft Azure
+Getting started with Elasticsearch is no further than executing a few simple clicks from the [Azure Marketplace](https://azuremarketplace.microsoft.com)...just a search for **Elasticsearch Service**, and within a few clicks you will be signed up with your free Elasticsearch Service trial. The Elasticsearch Service Azure Marketplace listing contains a great deal of useful **Key Features**, offering a great starting point for those wishing to plunge into Elasticsearch. 
+## Choosing the right deployment type
+Deployment templates are what Elastic Cloud managed services provides you, to get up and running on the Elastic Cloud quickly. To get started, there is no need to determine how many nodes are needed, nor how much memory or storage each instance should have.
+
+Every deployment template includes a set of components called **instances** which are appropriately sized based on the type of workload selected. These instances include Elasticsearch data, ingest, as well as Kibana for every deployment, but there are additional instances one can include at the time of deployment, or later, such as a machine learning (ML) node, dedicated monitoring nodes, an Application Performance Monitoring (APM) server, or when ingesting data from an expansive environment, a coordinating node. Instance configurations map to [Azure instance types](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec_azure).
+
+At Elastic, we understand there is never a one-size-fits all deployment type, and that is why we provide various templates which have customization options, if you should choose. Elasticsearch Service on Microsoft Azure provides stability, consistent performance, and greater flexibility, ensuring you always have whatever resources you need, where and when you need them.
+
+For most general search use cases, the **I/O Template** is recommended, however, for more specific uses cases, there are other templates which may be more suitable. For example, **hot-warm** templates are typically used for logging use cases. [Hot-Warm Architecture](https://www.elastic.co/guide/en/cloud/current/ec-getting-started-templates-hot-warm.html) configures different tiers of data nodes, with hot data nodes optimised for indexing and high search throughput and warm data nodes optimised for cost effective storage. Index Lifecycle Management Policies ensure that the numerous logs that no longer need to be frequently queried get moved to the **warm data nodes**.
+
+> [!div class="nextstepaction"]
+> [Read more about deployment templates](https://www.elastic.co/guide/en/cloud/current/ec-getting-started-templates.html)
+
+## Launching Kibana
+
+Kibana is [your window into the Elastic Stack](https://www.elastic.co/kibana), where 
+building and exploring dashboards gives you the ability, and freedom, to bring insights into the hands who need them. Remember the age old saying, “a picture says a thousand words?” Well, Kibana is that same picture, “worth a thousand log lines.” 
+
+To launch Kibana, select the **Launch** link within your Deployment page next to Kibana (alternatively, the link is available within the Kibana sub-section under your deployment). To begin with, you can log in with your `elastic` username and password (created when you first created your deployment).
+
+Getting started looking at real world data is as simple as clicking **Try our sample data**, which not only loads the sample data, but also sample dashboards and more. This option is great to get familiar with Kibana and its features, and immediately see the power of Kibana, where everyone can see the benefits in creating, customizing and utilizing all the amazing dashboards containing histograms, graphs, pie charts, maps and more! 
+
+Check out this wonderful [Getting Started with Kibana](https://www.elastic.co/webinars/getting-started-kibana) video!
+
+## Ingesting your data into Elasticsearch and visualizing it in Kibana
+
+What types of data matters to you? Are you most interested in the performance metrics for the application, JVM, container, or cloud platform? Do you need to analyze thousands of lines of log files from many different kinds of sources, all in one location just to find out why your users cannot connect, or why an app is running slow, or not running at all? 
+
+You can find answers to these questions and more in Kibana.
+
+![Kibana Web Traffic Dashboard](media/java-get-started-with-elasticsearch/kibana-overview.png)
+
+### Placeholder for offering a secondary option for ingesting with Elastic Agent per Gail….
+
+### Installing Filebeat 
+
+Throughout your environment, we can assume there are tons of threads in logs, spread across many different applications, servers, and locations with different format types and even possibly languages that a person in your position must analyze. It is not practical, nor scalable, to try and analyze them by logging onto each system and to parse through those 10s of thousands of lines of text. Rather, there is a much more efficient method to analyze such large amounts of log file data, provided at no additional cost. One in particular is [Filebeat](https://www.elastic.co/beats/filebeat), Elastic’s lightweight data shippers for logs. 
+
+![Logs Analysis ](media/java-get-started-with-elasticsearch/log-analysis.png)
+
+Filebeat is one of the many open platform [Beats](https://www.elastic.co/beats) Elastic offers out-of-the-box, ready to help ingesting logs and are [container](https://www.elastic.co/docker-kubernetes-container-monitoring) and cloud-ready. Beats are designed by Elastic to understand your applications, sending relevant data directly into Elasticsearch in a pattern that is understood.
+
+Configuring Filebeat begins within Kibana, where clear instructions are depicted. The setup depends on your system, but essentially consists of downloading, configuring the **filebeat.yml** file, which consists of setting what to collect, and where they need to go, and then running the setup commands. The process generally takes under five minutes.
+
+Additionally, you may want to enable modules relevant to your environment, such as if you are running Nginx or MySQL. There is also a **Systems Logs module**, which you can enable upon installing Filebeat. Check out all the out-of-the-box types of [Elastic Integrations](https://www.elastic.co/integrations). Many come with pre-built dashboards and visualizations, getting you up and running even faster!  
+
+> [!NOTE]
+> Filebeat guarantees at-least-once delivery and from then on keeps track of the last lines sent by utilizing [harvesters](https://www.elastic.co/guide/en/beats/filebeat/current/how-filebeat-works.html#harvester). There is a *registry* that rebuilds the state should Filebeat get restarted. If that registry gets corrupted or deleted, then all the logs will need to be re-sent to Elasticsearch. 
+
+For more detailed instructions, please visit the [Getting Started with Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html) reference guide.  
+
+#### Enabling additional Filebeat modules
+
+Don’t stop there! Install the following Filebeat modules, many coming with pre-built dashboards. 
+
+> [!div class="checklist"]
+> * [Apache](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-apache.html) 
+> * [Azure](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-azure.html) 
+> * [Kafka](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-kafka.html)
+> * [Nginx](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-nginx.html)
+> * [Redis](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-redis.html)
+
+Check out all the [out-of the-box modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html). Most come with visualizations and pre-built dashboards.
+
+### Installing Metricbeat 
+
+Metricbeta tailgates Filebeat in our Elasticsearch journey since they support using Kibana for gaining a holistic point of view of the environment.  The [Metricbeat System module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-system.html) sends into Elasticsearch: `cpu`, `memory`, `load`, `network` and `processes`, all ready to be visualized in Kibana with predefined dashboards. Metrics can sit alongside log data providing visibility across your entire ecosystem known as [Elastic Observability](https://www.elastic.co/observability).  
+
+## Elastic Observability
+
+The [Elastic Observability](https://www.elastic.co/observability) solution includes:
+
+[Elastic APM](https://www.elastic.co/apm) - Open source application performance monitoring
+[Elastic Logs](https://www.elastic.co/log-monitoring) - Open source log monitoring
+[Elastic Metrics](https://www.elastic.co/infrastructure-monitoring) - Open source infrastructure monitoring
+[Elastic Uptime](https://www.elastic.co/uptime-monitoring) - Open source uptime monitoring
+
+Elastic Observability is not just for the development perspective, nor just for helping with break-fix scenarios. Elastic Observability drives intelligent operational decisions based on gaining an insight as to whom may have been impacted, how they may have reacted, how much money may have been lost, and more. Utilizing machine learning, an optionally enabled service offered through the Platinum [Elastic Cloud managed service pricing plan(https://www.elastic.co/pricing), detecting anomalies can also help prevent unforeseen circumstances in a more proactive manner. 
+
+The APM Server ingests data from agents, the open source libraries that sit on your application host which instrument the code and collect performance data and errors at run-time. The APM Java Agent can help Java developers by capturing data to help determine the root cause for perhaps a web transaction timing out because a server has run out of cache, a result of seeing anomalies in the heap usage. 
+
+This is possible because Kibana brings together the relevant logs and metrics, into one centralized location. The various APM agents capture [instrumented application events](https://www.elastic.co/guide/en/apm/get-started/current/apm-data-model.html) such as spans, transactions, errors and metrics.
+
+> [!div class="nextstepaction"]
+> [Read more about Elastic’s APM system](https://www.elastic.co/guide/en/apm/get-started/current/overview.html)
+
+## Viewing the ingested data in Kibana
+
+### Logs
+
+A developer will be very interested in data log analysis, during the development process as well as during run-time. On the side navigation, find the Observability section, and click **Logs**. This is one area where logs are centralized and visualized, and can even be streamed in real time by clicking on **Stream live** in the upper right side of the screen. Query terms can be searched using [Kibana Query Language](https://www.elastic.co/guide/en/kibana/current/kuery-query.html) or plain EnglishThe time filter can be customized and term can be highlighted. 
+
+> [!NOTE]
+> Filebeat provides a default index pattern, a definition table Elasticsearch uses within Kibana for the data as it is ingested and indexed to be searched by field types. That default index pattern may not be appropriate for all data ingest types. In Logs, you can change the index pattern, for example, if the data does not have a standard timestamp which is used for sorting by clicking [Settings](https://www.elastic.co/guide/en/logs/guide/current/configure-logs-source.html). 
+
+Please start by searching for a particular event, such as errors, by entering **mozilla** in the query bar, or just typing a term. Notice the log histogram on the right side, an indication of when log entries were ingested. This can be helpful to see when a large number of logging events took place.
+
+View more details by clicking the **Log line details**.
+
+![Log line details](media/java-get-started-with-elasticsearch/logs-logline-details.png)
+
+### Discover
+
+Discover offers users the ability to create relevant visualizations representing the message data, which alone in its raw format cannot easily be interpreted. 
+
+Before using Discover an [index pattern](https://www.elastic.co/guide/en/kibana/current/index-patterns.html) must be created. Fortunately for us, Filebeat provides a basic index pattern we can build off of, so we are not having to start from scratch, but the process is very straightforward. [Our user guides provide more info on creating index patterns](https://www.elastic.co/guide/en/kibana/current/index-patterns.html). 
+
+> [!TIP]
+> To get started with Discover and other visualizations, you can take advantage of the [sample data set](https://www.elastic.co/guide/en/kibana/current/getting-started.html#get-data-in) that comes with built-in index patterns, visualizations and dashboards. They are a wonderful way to Get Started with Elasticsearch.
+
+![Adding sample data](media/java-get-started-with-elasticsearch/add-sample-data.png)
+
+Within Discover you can see an ingest of data. Take advantage of the [time filter](https://www.elastic.co/guide/en/kibana/current/set-time-filter.html) to expand or narrow the time range. 
+
+> [!TIP]
+> By default, the time filter is set to the last 15 minutes, therefore you may need to adjust it to a larger time frame if you do not see any data.
+
+Make sure that you are able to bring in different data indexes by selecting the **Change Index Pattern** dropdown. For example, in the screenshot you can see that **filebeat*** is selected. 
+
+![Changing Index Patterns](media/java-get-started-with-elasticsearch/change-index-pattern.png)
+
+Notice the various available fields. Because log files are very different, creating customized index patterns will be something advantageous to do, however, since we have a good baseline to work from, since we have installed the filebeat system module, we can utilize a few known fields sure to be similar and helpful for exploring data in a relevant way. 
+
+We will show you how to filter down data to be able to visualize what is important for you. 
+
+Scroll down to where it says **host.os.platform** and then click **Add**, followed by **process.name** and finally **message**.
+
+What you are now left with is *filtered* data that makes it easy to determine what is going on with each system based on platform and relevant service. 
+
+Now, click on **process.name** where it will then expand showing you various processes running. Choose one by clicking the plus sign to the right. This will filter even more, providing perhaps an indication of what that process may be involved with. Clicking the minus sign does not remove the filter, rather, it is a logical operator NOT and will prevent what is selected from displaying; a suppression of sorts. 
+
+If a process that you would like to investigate is not listed, as only the top five are displayed, simply utilize the **Add filter** function. 
+
+Click **Add filter** under the search bar.
+
+Enter **process.name** for the field then be sure and click the name once it is displayed.
+
+Select **is** for the operator.
+
+Select a value such as **sudo**. This is a great value to search and filter for when needing to know how people are using sudo credentials. 
+
+Click **Save**.
+
+To add a little more insight for sudo, remove **message** and add **host.name** and **system.auth.sudo.command**. You can expand the entry to gain more information in Table and JSON formats. 
+
+> [!TIP]
+>  You can move various columns by hovering your mouse over the column name. 
+
+Since we do not know what specific application logs you have ingested, or plan to ingest, the steps above should be able to be translated into whatever data explorations you wish to have. Your journey is just beginning, and we encourage you to take advantage of the [Free Fundamentals training](https://www.elastic.co/training/free#quick-starts) such as [Kibana Fundamentals](https://www.elastic.co/training/kibana-fundamentals).   
+
+### Kibana Lens
+
+You have learned how to shape data with Discover, providing a more relevant search experience. Let us now jump into **shaping** your data with [Kibana Lens](https://www.elastic.co/guide/en/kibana/current/lens.html). Lens is an amazing feature of Kibana that allows you to build amazingly rich visualizations by a simple drag-n-drop method. Lens is also very intelligent in that it understands the data you are trying to work with and offers suggestive input, greatly increasing your productivity and efficiency. 
+
+From Dashboard click **Create dashboard** > **Create new**
+
+Notice the different kinds of visualizations that you can create such as area, data tables, heat maps, bar and line graphs, pie charts and more!
+
+Click **Go to Lens**, the new intuitive way to create visualizations. 
+
+Make sure to have selected the **filebeat-*** index pattern.
+
+Let us start with some basics. Drag and drop **@timestamp**. You should already see something, and it may just be one or two long vertical bars. Remember that you may need to adjust the time filter, which can be done by dragging your mouse over the area you want to zoom into. 
+
+Next drag and drop **process.name**. 
+
+You should already start to see the benefits of what this tool can do. If you do not see enough data, simply expand the timeframe. 
+
+You can also change the chart type by either clicking on a suggestion Lens provides, or by selecting a new visualization type from the drop down where it shows the current type on the right side.  
+
+### Dashboards
+
+There are many relevant out-of-the-box dashboards, made from pre-built visualizations, which can be customized. Metrics for applications, systems, containers for Syslog, Sudo commands, SSH logins and New users and groups. 
+
+From Kibana Home, click on **Dashboards** and search for *sys*. Try it out by running a few sudo commands on your system with Filebeat configured, or connecting with SSH including throwing in a bad credential, looking at their respective dashboards. 
+
+> [!TIP]
+> Don’t see anything new, be sure to click **Refresh** in the upper right side of the screen, or set the refresh rate by clicking the calendar icon just to the left of the Refresh button. 
+
+
+
+
+## Next Steps
+
+### Get Started with Elasticsearch 
+
+
+
+
+
+
+
+
+|System   |Metric   |
+|---------|---------|
+| FreeBSD     | [core](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-core.html), [cpu](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-cpu.html), [diskio](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-diskio.html), [filesystem](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-filesystem.html), [fsstat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-fsstat.html), [load](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-load.html), [memory](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-memory.html), [network](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-network.html), [process](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process.html), [process_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process_summary.html), [socket_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-socket_summary.html), [uptime](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-uptime.html)   |
+| Linux   | [core](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-core.html), [cpu](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-cpu.html), [diskio](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-diskio.html), [entropy](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-entropy.html), [filesystem](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-filesystem.html), [fsstat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-fsstat.html), [load](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-load.html), [memory](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-memory.html), [network](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-network.html), [network_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-network_summary.html), [process](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process.html), [process_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process_summary.html), [raid](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-raid.html), [service](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-service.html), [socket](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-socket.html), [socket_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-socket_summary.html), [uptime](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-uptime.html), [users](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-users.html)    |
+| macOS   | [core](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-core.html), [cpu](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-cpu.html), [diskio](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-diskio.html), [filesystem](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-filesystem.html), [fsstat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-fsstat.html), [load](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-load.html), [memory](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-memory.html), [network](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-network.html), [process](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process.html), [process_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process_summary.html), [socket_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-socket_summary.html), [uptime](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-uptime.html)  |
+| OpenBSD | [core](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-core.html), [cpu](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-cpu.html), [filesystem](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-filesystem.html), [fsstat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-fsstat.html), [load](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-load.html)[memory](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-memory.html), [uptime](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-uptime.html)   |
+| Windows | [core](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-core.html), [cpu](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-cpu.html), [diskio](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-diskio.html), [filesystem](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-filesystem.html), [fsstat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-fsstat.html), [memory](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-memory.html), [network](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-network.html), [process](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process.html), [process_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-process_summary.html), [socket_summary](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-socket_summary.html), [uptime](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-system-uptime.html)   |
+
+
+Don’t stop there! Install the following Filebeat modules, many coming with pre-built dashboards.
+
+> [!div class="checklist"]
+> * [Apache](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-apache.html) 
+> * [Azure](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-azure.html) 
+> * [Kafka](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-kafka.html)
+> * [Nginx](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-nginx.html)
+> * [Redis](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-redis.html)
+
+The process is more or less the same where you enable the module and then create a configuration modification. 
+
+The [Elastic Observability](https://www.elastic.co/observability) solution includes:
+
+ - [Elastic APM](https://www.elastic.co/apm) - Open source application performance monitoring
+ - [Elastic Logs](https://www.elastic.co/log-monitoring) - Open source log monitoring
+ - [Elastic Metrics](https://www.elastic.co/infrastructure-monitoring) - Open source infrastructure monitoring
+ - [Elastic Uptime](https://www.elastic.co/uptime-monitoring) - Open source uptime monitoring
+
+Audit the activities of users and processes on your systems [Auditbeat](https://www.elastic.co/guide/en/beats/auditbeat/current/index.html) to detect changes to critical files, like binaries and configuration files, and identify potential security policy violations.
+
+
+- Audit data using Auditbeat
+- Log files using Filebeat
+- Cloud data using Functionbeat
+- Availability using Heartbeat
+- Systemd journals using Journalbeat
+- Metrics using Metricbeat
+- Network traffic using Packetbeat
+- Windows event logs using Winlogbeat
+
+Need a single, unified way to add monitoring for logs, metrics, and other types of data to each host? Look at ingest management using [Elastic Agent](https://www.elastic.co/guide/en/ingest-management/7.9/ingest-management-overview.html).
