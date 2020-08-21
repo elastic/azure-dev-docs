@@ -170,7 +170,7 @@ There are many different kinds of visualizations that you can create, such as ar
 ![Kibana Lens](media/es-for-java-developers-overview/kibana-lens.png) 
 
 > [!div class="nextstepaction"]
-> [Gets Started with Lens!](https://www.elastic.co/guide/en/kibana/current/lens.html)
+> [Get started with Lens!](https://www.elastic.co/guide/en/kibana/current/lens.html)
 
 ### Discover
 
