@@ -1,4 +1,4 @@
- ---
+---
 title: Elasticsearch for Java Developers hosted on Azure Overview
 description: Integrating Elasticsearch Service on Microsoft Azure for Java developers.
 author: Aaron Schifman (Elastic)
@@ -6,34 +6,54 @@ manager: Craig Griffin (Elastic)
 ms.topic: Overview
 ms.date: August 2020
 ---
+
 # Elasticsearch Service for Java developers running on Microsoft Azure
+
 This document presents an overview of Elasticsearch Service hosted on Microsoft Azure, focused on the Java developer audience. 
 
 Expect to understand what Elasticsearch is and why deploying it on Microsoft Azure is the quickest way of spinning up an Elasticsearch cluster, rather than deploying a self-managed environment. This should matter to a Java developer because Java developers are more interested in spending their time developing and enhancing their applications, rather than on infrastructure management. 
 
 If you are already familiar with deploying an Elasticsearch cluster, keep reading, you will certainly find it very useful. This overview identifies and articulates various benefits applicable for Java developers. At various times, details around the various out-of-the-box solutions are discussed, such as ingesting data and how powerful Kibana is, providing critical insight into the environment both during development and at run-time.
-## Elasticsearch Features
-Elasticsearch is a distributed, RESTful search and analytics engine that Java developers running on Azure, can take advantage of, including many of the following features.
- 
-[Enterprise Search](https://www.elastic.co/enterprise-search) - Search everything, anywhere
-[Observability](https://www.elastic.co/observability) - Unified visibility across your entire ecosystem
-[Security](https://www.elastic.co/security) - Unified protection for everyone
-[Elastic Stack](https://www.elastic.co/elastic-stack) - The core products: Elasticsearch, Kibana, Beats, and Logstash
-[Machine Learning](https://www.elastic.co/what-is/elasticsearch-machine-learning) - Find anomalies, forecast trends, and identify areas of interest 
-Audit data using [Auditbeat](https://www.elastic.co/products/beats/auditbeat) 
-Log files using [Filebeat](https://www.elastic.co/products/beats/filebeat) 
-Cloud data using [Functionbeat](https://www.elastic.co/products/beats/functionbeat) 
-Availability using [Heartbeat](https://www.elastic.co/products/beats/heartbeat) 
-Systemd journals using [Journalbeat](https://www.elastic.co/downloads/beats/journalbeat) 
-Metrics using [Metricbeat](https://www.elastic.co/products/beats/metricbeat) 
-Network traffic using [Packetbeat](https://www.elastic.co/products/beats/packetbeat) 
-Windows event logs using [Winlogbeat](https://www.elastic.co/products/beats/winlogbeat) 
+
+## Elasticsearch services and features
+
+Elasticsearch is a distributed, RESTful search and analytics engine providing Java developers running on Azure with rich features and services. Open source solutions optimized for your use cases, including industry-leading service, monitoring, and support from both Elastic and Azure. Get automatic backups, upgrades and the latest security patches with little downtime or disruptions.
+
+### Many amazing services include: 
+- [Elastic Enterprise Search](https://www.elastic.co/enterprise-search) - Search everything, anywhere
+- [Elastic Observability](https://www.elastic.co/observability) - Unified visibility across your entire ecosystem
+- [Elastic Stack](https://www.elastic.co/elastic-stack) - The core products: Elasticsearch, Kibana, Beats, and Logstash
+- [Elastic Maps]()
+
+### Many amazing features include: 
+- [Alerting]()
+- [Monitoring]() 
+- [Reporting]()
+- [Graphing capabilites]()
+- [Machine learning](https://www.elastic.co/what-is/elasticsearch-machine-learning) - Find anomalies, forecast trends, and identify areas of interest 
+
+### Many amazing products include:
+- [Elastic Security](https://www.elastic.co/security) - Unified protection for everyone (combined SEIM and Elastic Endpoint Security)
+- [Elastic Logs]()
+- [lastic Maps]()
+- 
+- Elastic Metrics - 
+- Elastic Beats - 
+    - Audit data using [Auditbeat](https://www.elastic.co/products/beats/auditbeat) 
+    - Log files using [Filebeat](https://www.elastic.co/products/beats/filebeat) 
+    - Cloud data using [Functionbeat](https://www.elastic.co/products/beats/functionbeat) 
+    - Availability using [Heartbeat](https://www.elastic.co/products/beats/heartbeat) 
+    - Systemd journals using [Journalbeat](https://www.elastic.co/downloads/beats/journalbeat) 
+    - Metrics using [Metricbeat](https://www.elastic.co/products/beats/metricbeat) 
+    - Network traffic using [Packetbeat](https://www.elastic.co/products/beats/packetbeat) 
+    - Windows event logs using [Winlogbeat](https://www.elastic.co/products/beats/winlogbeat) 
+
+Eand Maps Service
+Scalability
 
 Need a single, unified way to add monitoring for logs, metrics, and other types of data to each host? Look at ingest management using [Elastic Agent](https://www.elastic.co/guide/en/ingest-management/7.9/ingest-management-overview.html).
 
 Refer to the official Elastic [Hosted Elasticsearch on Microsoft Azure](https://www.elastic.co/azure) landing page for more details.
-
-Open source solutions optimized for your use cases, including industry-leading service, monitoring, and support from both Elastic and Azure. Get automatic backups, upgrades and the latest security patches with little downtime or disruptions.
 
 Check out all the [free training](https://www.elastic.co/training) opportunities!
 ## Create deployments in just minutes on Microsoft Azure
