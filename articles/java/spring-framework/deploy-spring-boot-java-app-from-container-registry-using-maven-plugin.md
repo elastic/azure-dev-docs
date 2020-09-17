@@ -147,7 +147,7 @@ Without any authentication parameters, password-based authentication is used wit
 
 1. Retrieve the password for your container registry:
    ```azurecli
-   az acr credential show --name wingtiptoysregistry --query passwords[0]
+   az acr credential show --name wingtiptoysregistry --resource-group wingtiptoysresources "passwords[0].value"
    ```
    Azure will respond with your password; for example:
    ```json
@@ -282,7 +282,7 @@ Open the `pom.xml` file for your Spring Boot application in a text editor, and t
    <plugin>
       <groupId>com.microsoft.azure</groupId>
       <artifactId>azure-webapp-maven-plugin</artifactId>
-      <version>0.1.3</version>
+      <version>1.10.0</version>
       <configuration>
          <authentication>
             <serverId>azure-auth</serverId>
