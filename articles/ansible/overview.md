@@ -3,7 +3,8 @@ title: Using Ansible with Azure
 description: Introduction to using Ansible to automates cloud provisioning, configuration management, and application deployments.
 keywords: ansible, azure, devops, overview, cloud provision, configuration management, application deployment, ansible modules, ansible playbooks
 ms.topic: overview
-ms.date: 04/30/2019
+ms.date: 08/13/2020
+ms.custom: devx-track-ansible
 ---
 
 # Using Ansible with Azure
@@ -18,9 +19,9 @@ This article gives a basic overview of some of the benefits of using Ansible wit
 
 ## Ansible modules
 
-Ansible includes a suite of [Ansible modules](https://docs.ansible.com/ansible/latest/modules_by_category.html) that are run directly on remote hosts or via [playbooks](https://docs.ansible.com/ansible/latest/playbooks.html). Users can create their own modules. Modules are used to control system resources - such as services, packages, or files - or execute system commands.
+Ansible includes a suite of [Ansible modules](https://docs.ansible.com/ansible/2.9/modules/modules_by_category.html) that are run directly on remote hosts or via [playbooks](https://docs.ansible.com/ansible/latest/playbooks.html). Users can create their own modules. Modules are used to control system resources - such as services, packages, or files - or execute system commands.
 
-For interacting with Azure services, Ansible includes a suite of [Ansible cloud modules](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure). These modules enable you to create and orchestrate your infrastructure on Azure. 
+For interacting with Azure services, Ansible includes a suite of [Ansible cloud modules](https://docs.ansible.com/ansible/2.9/modules/list_of_cloud_modules.html#azure). These modules enable you to create and orchestrate your infrastructure on Azure. 
 
 ## Migrate existing workload to Azure
 
@@ -51,5 +52,5 @@ Ansible includes a suite of modules for use in provisioning and configuring Azur
 
 ## Next steps
 
-- [Quickstart: Deploy the Ansible solution template for Azure to CentOS](./solution-template-deploy.md)
-- [Quickstart: Configure Linux virtual machines in Azure using Ansible](./install-on-linux-vm.md)
+- [Quickstart: Configure Ansible using Azure Cloud Shell](getting-started-cloud-shell.md)
+- [Quickstart: Configure Ansible using Azure CLI](install-on-linux-vm.md)

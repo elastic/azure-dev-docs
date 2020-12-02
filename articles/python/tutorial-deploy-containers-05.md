@@ -3,7 +3,7 @@ title: "Step 5: Clean up Azure resources"
 description: Tutorial step 5, cleaning up Azure resources to avoid incurring ongoing charges.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.custom: seo-python-october2019
+ms.custom: devx-track-python, seo-python-october2019
 ---
 
 # 5: Clean up Azure resources
@@ -18,7 +18,7 @@ The Azure resources that you created in this tutorial can incur ongoing costs. T
 
 You can learn more about the Docker and App Service extensions by visiting their respective repositories on GitHub: [vscode-docker](https://github.com/Microsoft/vscode-docker) and [vscode-azureappservice](https://github.com/Microsoft/vscode-azureappservice). Issues and contributions are also welcome.
 
-To learn more about Azure services that you can use from Python, including data storage along with AI and Machine Learning services, visit [Azure Python Developer Center](https://docs.microsoft.com/python/azure/?view=azure-python).
+To learn more about Azure services that you can use from Python, including data storage along with AI and Machine Learning services, visit [Azure Python Developer Center](/python/azure/?preserve-view=true&view=azure-python).
 
 There are also other Azure extensions for VS Code that you may find helpful. Just search on "Azure" in the Extensions explorer:
 
@@ -32,6 +32,4 @@ Some popular extensions are:
 - [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 > [!div class="nextstepaction"]
-> [I'm done!](https://docs.microsoft.com/python/azure/?view=azure-python)
-
-[I ran into an issue](https://www.research.net/r/PWZWZ52?tutorial=vscode-appservice-containers&step=07-clean-up-resources)
+> [I'm done!](/python/azure/?preserve-view=true&view=azure-python)

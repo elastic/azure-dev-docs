@@ -2,8 +2,8 @@
 title: "Step 5: Deploy a Python web app to Azure App Service on Linux using VS Code"
 description: Tutorial step 5, deploying the web app code
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.custom: seo-python-october2019
+ms.date: 11/20/2020
+ms.custom: devx-track-python, seo-python-october2019
 ---
 
 # 5: Deploy your Python web app to Azure App Service on Linux
@@ -22,6 +22,9 @@ Use this procedure to deploy your Python app to an Azure App Service.
 
     - For "Select the folder to deploy," select your current app folder.
     - For "Select Web App," choose the App Service you created in the previous step.
+    - If prompted to update your build configuration to run build commands, answer **Yes**.
+    - If prompted about overwriting the existing deployment, answer **Deploy**.
+    - If prompted to "always deploy the workspace", answer **Yes**.
 
 1. While the deployment process is underway, you can view progress in the VS Code **Output** window.
 
@@ -33,13 +36,15 @@ Use this procedure to deploy your Python app to an Azure App Service.
 
     ![The app running successfully on App Service](media/deploy-azure/web-app-running-successfully-on-app-service.png)
 
+1. If you still see the default app, wait a minute or two for the container to restart after the deployment and try again. If you're using a custom startup command and have verified its correctness, then continue to step 6 to check the logs.
+
 1. To verify that your files are deployed, expand the App Service in the **Azure: App Service** explorer, then expand **Files**:
 
     ![Checking deployment files through the App Service explorer](media/deploy-azure/expand-files-node-to-check-deployment-of-web-app-files.png)
 
-    The *antenv* folder is where App Service creates a virtual environment with your dependencies. If you expand this node, you can verify that the packages you named in *requirements.txt* are installed in *antenv/lib/python3.7/site-packages*.
+    In case you're wondering, the files *.deployment*, *antenv.tar.gz*, and *oryx-manifest.toml* are used by the App Service build system. The *hostingstart.html* is the default app page.
 
 > [!div class="nextstepaction"]
 > [I deployed my app - continue to step 6 >>>](tutorial-deploy-app-service-on-linux-06.md)
 
-[I ran into an issue](https://www.research.net/r/PWZWZ52?tutorial=vscode-appservice-python&step=05-deploy-app)
+[Having issues? Let us know.](https://aka.ms/FlaskVSCQuickstartHelp)

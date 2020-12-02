@@ -1,8 +1,9 @@
 ---
 title: Java source samples for Azure Active Directory
-description: Get sample code for working with Azure Active Directory from your Java apps.
+description: Learn how to get sample source code for working with Azure Active Directory (AD) from your Java apps.
 keywords: Azure, Java, SDK, API, active directory, Azure AD, AAD, security, log in, authentication, SSO, SAML
-author: rloutlaw
+author: bmitchell287
+ms.author: brendm
 ms.date: 07/31/2017
 ms.topic: article
 ms.service: multiple

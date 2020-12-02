@@ -12,6 +12,7 @@ metadata:
   author: TomArcherMsft
   ms.author: tarcher
   ms.date: 04/03/2020
+  ms.custom: devx-track-ansible
 
 landingContent:
   # Card
@@ -26,18 +27,16 @@ landingContent:
           - text: Releases and features
             url: module-version-matrix.md  
           - text: All modules for Azure
-            url:  https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure
+            url:  https://docs.ansible.com/ansible/2.9/modules/list_of_cloud_modules.html#azure
 
   # Card
   - title: Install and Configure Ansible
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Getting started - Cloud Shell
+          - text: Configure Ansible using Azure Cloud Shell
             url: getting-started-cloud-shell.md
-          - text: Deploy Ansible solution template to CentOS
-            url: solution-template-deploy.md
-          - text: Install Ansible on Linux virtual machines
+          - text: Configure Ansible using Azure CLI
             url: install-on-linux-vm.md
       - linkListType: tutorial
         links:

@@ -3,7 +3,8 @@ title: Tutorial - Deploy to Azure App Service with Jenkins and the Azure CLI
 description: Learn how to use Azure CLI to deploy a Java web app to Azure in Jenkins Pipeline
 keywords: jenkins, azure, devops, app service, cli
 ms.topic: tutorial
-ms.date: 04/25/2020
+ms.date: 11/10/2020 
+ms.custom: devx-track-jenkins, devx-track-azurecli
 ---
 
 # Tutorial: Deploy to Azure App Service with Jenkins and the Azure CLI
@@ -20,7 +21,7 @@ To deploy a Java web app to Azure, you can use Azure CLI in a [Jenkins Pipeline]
 
 ## Create and configure Jenkins instance
 
-If you do not already have a Jenkins master, install with the [Jenkins solution template](configure-on-linux-vm.md). By default, the template installs the required [Azure Credentials](https://plugins.jenkins.io/azure-credentials) plug-in. 
+If you do not already have a Jenkins master, [install Jenkins on a Linux VM](configure-on-linux-vm.md).
 
 The Azure Credential plug-in allows you to store Microsoft Azure service principal credentials in Jenkins. In version 1.2, we added the support so that Jenkins Pipeline can get the Azure credentials. 
 
@@ -41,7 +42,7 @@ sudo apt-get install -y maven
 An Azure credential is needed to execute Azure CLI.
 
 * Within the Jenkins dashboard, click **Credentials -> System ->**. Click **Global credentials(unrestricted)**.
-* Click **Add Credentials** to add a [Microsoft Azure service principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) by filling out the Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint. Provide an ID for use in subsequent step.
+* Click **Add Credentials** to add a [Microsoft Azure service principal](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%252fazure%252fazure-resource-manager%252ftoc.json) by filling out the Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint. Provide an ID for use in subsequent step.
 
 ![Add Credentials](./media/deploy-to-azure-app-service-using-azure-cli/add-credentials.png)
 
@@ -76,7 +77,7 @@ When the plan is ready, the Azure CLI shows similar output to the following exam
 
 ### Create an Azure web app
 
- Use the [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) CLI command to create a web app definition in the `myAppServicePlan` App Service plan. The web app definition provides a URL to access your application with and configures several options to deploy your code to Azure. 
+ Use the [az webapp create](/cli/azure/webapp#az-webapp-create) CLI command to create a web app definition in the `myAppServicePlan` App Service plan. The web app definition provides a URL to access your application with and configures several options to deploy your code to Azure. 
 
 ```azurecli-interactive
 az webapp create \

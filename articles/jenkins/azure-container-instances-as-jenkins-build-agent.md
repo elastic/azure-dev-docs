@@ -4,9 +4,12 @@ description: Learn how to configure a Jenkins server to run build jobs on-demand
 keywords: jenkins, azure, devops, container instances, build agent
 ms.topic: article
 ms.date: 08/31/2018
+ms.custom: devx-track-jenkins
 ---
 
 # Tutorial: Use Azure Container Instances as a Jenkins build agent
+
+[!INCLUDE [jenkins-integration-with-azure.md](includes/jenkins-integration-with-azure.md)]
 
 Azure Container Instances (ACI) provides an on-demand, burstable, and isolated environment for running containerized workloads. Because of these attributes, ACI makes a great platform for running Jenkins build jobs at a large scale. This article walks through deploying and using a Jenkins server that's pre-configured with ACI as a build target.
 

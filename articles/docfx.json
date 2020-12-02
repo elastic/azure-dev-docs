@@ -14,7 +14,8 @@
           "README.md",
           "LICENSE",
           "LICENSE-CODE",
-          "ThirdPartyNotices.md"
+          "ThirdPartyNotices.md",
+          "azure-docs/**"
         ],
         "src": ".",
         "dest": "."
@@ -26,11 +27,9 @@
           "**/*.png",
           "**/*.jpg",
           "**/*.gif",
-          "**/*.svg"
-        ],
+          "**/*.svg"],
         "exclude": [
           "**/obj/**",
-          "**/includes/**",
           "_themes/**",
           "_themes.pdf/**",
           "**/docfx.json",
@@ -86,7 +85,9 @@
         "chef/**/*.md": "TomArcherMsft",
         "jenkins/**/*.md": "TomArcherMsft",
         "terraform/**/*.md": "TomArcherMsft",
-        "javascript/**/*.md": "diberry"
+        "javascript/**/*.md": "diberry",
+        "javascript/**/*.yml": "diberry",
+        "lab/**/*.md": "diberry"
       },
       "manager": {
         "**/*.md": "barbkess",
@@ -103,7 +104,9 @@
         "chef/**/*.md": "tarcher",
         "jenkins/**/*.md": "tarcher",
         "terraform/**/*.md": "tarcher",
-        "javascript/**/*.md": "diberry"
+        "javascript/**/*.md": "diberry",
+        "javascript/**/*.yml": "diberry",
+        "lab/**/*.md": "diberry"
       },
       "ms.devlang": {
         "java/**/*.md": "java",
@@ -118,13 +121,27 @@
         "ansible/**/*.md": "ansible",
         "chef/**/*.md": "chef",
         "jenkins/**/*.md": "jenkins",
-        "terraform/**/*.md": "terraform"
+        "terraform/**/*.md": "terraform",
+        "lab/**/*.md": "azure"
       },
+      
       "titleSuffix": {
         "ansible/**/*.yml" : "Ansible",
         "chef/**/*.yml" : "Chef",
         "jenkins/**/*.yml" : "Jenkins",
-        "terraform/**/*.yml" : "Terraform"
+        "terraform/**/*.yml" : "Terraform",
+        "lab/**/*.md": "Dev Experience Lab"
+      },
+      "featureFlags": {
+        "javascript/**/*-feedback.yml": [
+          "enable_tutorial_feedback"
+        ],
+        "javascript/tutorial/**/*": [
+          "enable_tutorial_feedback"
+        ],
+        "lab/**/*": [
+          "enable_tutorial_feedback"
+        ]
       },
       "ms.topic": {
         "**/includes/**/*.md": "include"
@@ -132,12 +149,6 @@
       "ms.prod": {
         "python/**/*.md": "azure-python",
         "javascript/**/*.md": "azure-nodejs"
-      },
-      "ms.custom": {
-        "python/**/*.md": "tracking-python",
-        "ansible/**/*.md": "devx-track-ansible",
-        "terraform/**/*.md": "devx-track-terraform",
-        "javascript/**/*.md": "devx-track-javascript"
       }
     },
     "template": [],

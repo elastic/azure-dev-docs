@@ -10,7 +10,7 @@ ms.service: container-instances
 ms.tgt_pltfrm: multiple
 ms.topic: article
 ms.workload: web
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ---
 
 # Deploy a MicroProfile application to the cloud with Docker and Azure
@@ -152,12 +152,12 @@ For more information about the various technologies discussed in this article, s
 [Azure Container Registry Build]: /azure/container-registry/container-registry-build-overview
 [MicroProfile.io]: https://microprofile.io
 [Azure Command Line Interface (CLI)]: /cli/azure/overview
-[Azure for Java Developers]: /azure/developer/java/
+[Azure for Java Developers]: ../index.yml
 [Azure portal]: https://portal.azure.com/
 [free Azure account]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: https://github.com/
 [Maven]: http://maven.apache.org/
-[Java Development Kit (JDK)]: https://aka.ms/azure-jdks
+[Java Development Kit (JDK)]: ../fundamentals/java-jdk-long-term-support.md
 <!-- http://www.oracle.com/technetwork/java/javase/downloads/ -->
 [Azure Container Instances]: /azure/container-instances/
 [Azure Container Registry]:  /azure/container-registry

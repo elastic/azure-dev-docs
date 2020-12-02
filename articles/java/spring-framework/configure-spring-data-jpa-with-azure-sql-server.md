@@ -2,7 +2,7 @@
 title: Use Spring Data JPA with Azure SQL Database
 description: Learn how to use Spring Data JPA with an Azure SQL Database.
 documentationcenter: java
-ms.date: 06/19/2020
+ms.date: 10/14/2020
 ms.service: sql-database
 ms.tgt_pltfrm: multiple
 ms.author: judubois
@@ -12,7 +12,7 @@ ms.custom: devx-track-java
 
 # Use Spring Data JPA with Azure SQL Database
 
-This topic demonstrates creating a sample application that uses [Spring Data JPA](https://spring.io/projects/spring-data-jpa) to store and retrieve information in [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/).
+This topic demonstrates creating a sample application that uses [Spring Data JPA](https://spring.io/projects/spring-data-jpa) to store and retrieve information in [Azure SQL Database](/azure/sql-database/).
 
 [The Java Persistence API (JPA)](https://en.wikipedia.org/wiki/Java_Persistence_API) is the standard Java API for object-relational mapping.
 
@@ -31,6 +31,7 @@ Generate the application on the command line by entering:
 ```bash
 curl https://start.spring.io/starter.tgz -d dependencies=web,data-jpa,sqlserver -d baseDir=azure-database-workshop -d bootVersion=2.3.1.RELEASE -d javaVersion=8 | tar -xzvf -
 ```
+
 
 ### Configure Spring Boot to use Azure SQL Database
 
@@ -78,4 +79,4 @@ Congratulations! You've created a Spring Boot application that uses JPA to store
 
 For more information about Spring Data JPA, see Spring's [reference documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference).
 
-For more information about using Azure with Java, see [Azure for Java developers](/azure/developer/java/) and [Working with Azure DevOps and Java](/azure/devops/).
+For more information about using Azure with Java, see [Azure for Java developers](../index.yml) and [Working with Azure DevOps and Java](/azure/devops/).

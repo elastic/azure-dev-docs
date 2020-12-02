@@ -3,6 +3,7 @@ title: Configure your local Python environment for Azure development
 description: How to set up a local Python dev environment for working with Azure, including Visual Studio Code, the Azure SDK libraries, and the necessary credentials for library authentication.
 ms.date: 05/29/2020
 ms.topic: conceptual
+ms.custom: devx-track-python, devx-track-azurecli
 ---
 
 # Configure your local Python dev environment for Azure
@@ -72,7 +73,7 @@ The Azure CLI normally maintains your sign-in across sessions, but it's a good p
 
 ## Configure authentication
 
-As described in [How to manage service principals - Basics of authorization](how-to-manage-service-principals.md#basics-of-azure-authorization), each developer needs a service principal to use as the application identity when testing app code locally.
+As described in [How to Authenticate apps](azure-sdk-authenticate.md#identity-when-running-the-app-locally), each developer needs a service principal to use as the application identity when testing app code locally.
 
 The following sections describe how to create a service principal and the environment variables that provide the service principal's properties to the Azure libraries when needed.
 
@@ -88,11 +89,11 @@ Each developer in your organization should perform these steps individually.
     az ad sp create-for-rbac --name localtest-sp-rbac --skip-assignment --sdk-auth > local-sp.json
     ```
 
-    This command saves it output in *local-sp.json*. For more details on the command and its arguments, see [What the create-for-rbac command does](#what-the-create-for-rbac-command-does).
+    This command saves its output in *local-sp.json*. For more details on the command and its arguments, see [What the create-for-rbac command does](#what-the-create-for-rbac-command-does).
 
     If you're in an organization, you may not have permission in the subscription to run this command. In that case, contact the subscription owners to have them create the service principal for you.
 
-1. Create environment variables that the Azure libraries require. (The `DefaultAzureCredential` object of the azure-identity library looks for these variables).
+1. Use the following commands to create environment variables that the Azure libraries require. (The `DefaultAzureCredential` object of the azure-identity library looks for these variables).
 
     # [cmd](#tab/cmd)
 
@@ -116,9 +117,9 @@ Each developer in your organization should perform these steps individually.
 
     Replace the values shown in these commands with those of your specific service principal.
 
-    To retrieve your subscription ID, run the [`az account show`](/cli/azure/account?view=azure-cli-latest#az-account-show) command and look for the `id` property in the output.
+    To retrieve your subscription ID, run the [`az account show`](/cli/azure/account#az-account-show) command and look for the `id` property in the output.
 
-    For convenience, create a *.sh* or *.cmd* file with these commands that you can run whenever you open a terminal or command prompt for local testing. Again, don't add the file to source control so it remains only within your user account.
+    For convenience, create a command line script file (such as *setenv.sh* on macOS/Linux or *setenv.cmd* on Windows) that contains these same commands. You can then run the script to set the variables whenever you open a terminal or command prompt for local testing. Again, don't add the script file to source control so it remains only within your user account.
 
 1. Safeguard the client ID and client secret (and any files storing them) so they always remain within a specific user account on a workstation. Never save these properties in source control or share them with other developers. If needed, you can delete the service principal and create a new one.
 
@@ -132,7 +133,7 @@ Each developer in your organization should perform these steps individually.
 
 The `az ad create-for-rbac` command creates a service principal for "role-based authentication" (RBAC).
 
-- `ad` means Azure Active Directory; `sp` means "service principal," and `create-for-rbac` means "create for role-based access control," Azure's primary form of authorization. See the [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command reference.
+- `ad` means Azure Active Directory; `sp` means "service principal," and `create-for-rbac` means "create for role-based access control," Azure's primary form of authorization. See the [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command reference.
 
 - The `--name` argument should be unique within your organization and typically uses the name of the developer that uses the service principal. If you omit this argument, the Azure CLI uses a generic name of the form `azure-cli-<timestamp>`. You can rename the service principal on the Azure portal, if desired.
 
@@ -187,13 +188,15 @@ For every project, we recommend that you always create and activate a *virtual e
     # [cmd](#tab/cmd)
 
     ```bash
-    python -m venv .venv
+    # py -3 uses the global python interpreter. You can also use python -m venv .venv.
+    py -3 -m venv .venv
     ```
 
     # [bash](#tab/bash)
 
     ```bash
-    python -m venv .venv
+    # On Windows, use py -3 -m venv .venv
+    python3 -m venv .venv
     ```
 
     ---
@@ -204,14 +207,14 @@ For every project, we recommend that you always create and activate a *virtual e
 
     # [cmd](#tab/cmd)
 
-    ```bash
+    ```cmd
     .venv\scripts\activate
     ```
 
     # [bash](#tab/bash)
 
     ```bash
-    source .venv/scripts/activate
+    source .venv/bin/activate
     ```
 
     ---
@@ -232,7 +235,7 @@ git init
 
 From there you can run commands like `git add` and `git commit` to commit changes. By regularly committing changes, you create a commit history with which you can revert to any previous state.
 
-To make an online backup of your project, we also recommend uploading your repository to [GitHub](https://github.com) or [Azure DevOps](/azure/devops/user-guide/code-with-git?view=azure-devops). If you've initialized a local repository first, use `git remote add` to attach the local repository to GitHub or Azure DevOps.
+To make an online backup of your project, we also recommend uploading your repository to [GitHub](https://github.com) or [Azure DevOps](/azure/devops/user-guide/code-with-git?view=azure-devops&preserve-view=true). If you've initialized a local repository first, use `git remote add` to attach the local repository to GitHub or Azure DevOps.
 
 Documentation for git is found on [git-scm.com/docs](https://git-scm.com/docs) and all around the Internet.
 

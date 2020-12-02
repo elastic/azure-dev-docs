@@ -12,6 +12,7 @@ metadata:
   author: TomArcherMsft
   ms.author: tarcher
   ms.date: 02/24/2020
+  ms.custom: devx-track-jenkins
 
 landingContent:
   # Card
@@ -35,7 +36,7 @@ landingContent:
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Create a Jenkins server
+          - text: Configure Jenkins using Azure CLI
             url: configure-on-linux-vm.md
       - linkListType: download
         links:
@@ -69,8 +70,6 @@ landingContent:
             url: deploy-from-github-to-aks.md
           - text: Deploy to AKS using blue/green pattern
             url: deploy-to-aks-using-blue-green-deployment-pattern.md
-          - text: Deploy using the Azure Dev Spaces plug-in
-            url: azure-dev-spaces-and-aks.md  
 
   # Card
   - title: CI/CD to App Service
@@ -79,12 +78,6 @@ landingContent:
         links:
           - text: Create Azure resources in a pipeline job
             url: deploy-to-azure-app-service-using-azure-cli.md
-          - text: Deploy from GitHub to App Service
-            url: deploy-from-github-to-azure-app-service.md
-      - linkListType: how-to-guide
-        links:
-          - text: Deploy using the App Service plug-in
-            url: deploy-to-azure-app-service-using-plugin.md
 
   # Card
   - title: CI/CD to Azure DevOps

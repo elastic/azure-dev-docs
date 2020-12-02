@@ -3,6 +3,7 @@ title: Using Terraform with Azure
 description: Learn how Terraform can help you deploy and version your infrastructure on Azure.
 ms.topic: overview
 ms.date: 10/26/2019
+ms.custom: devx-track-terraform
 ---
 
 # Terraform with Azure
@@ -11,7 +12,7 @@ ms.date: 10/26/2019
 
 This article describes the benefits of using Terraform to manage Azure infrastructure.
 
-## Automate infrastructure management.
+## Automate infrastructure management
 
 Terraform's template-based configuration files enable you to define, provision, and configure Azure resources in a repeatable and predictable manner. Automating infrastructure has several benefits:
 
@@ -35,6 +36,7 @@ Terraform is adept at deploying an infrastructure across multiple cloud provider
 
 Now that you have an overview of Terraform and its benefits, here are suggested next steps:
 
-- Get started by [installing Terraform and configuring it to use Azure](getting-started-cloud-shell.md).
-- [Create an Azure virtual machine using Terraform](create-linux-virtual-machine-with-infrastructure.md)
-- Explore the [Azure Resource Manager module for Terraform](https://www.terraform.io/docs/providers/azurerm/) 
+Based on your environment, install and configure Terraform:
+
+- [Configure Terraform using Azure Cloud Shell and Azure CLI](get-started-cloud-shell.md)
+- [Configure Terraform using Azure PowerShell](get-started-powershell.md)

@@ -1,5 +1,5 @@
 ---
-title: Create your first function in Azure using IntelliJ IDEA
+title: Create your first serverless function with Azure Functions using IntelliJ IDEA
 description: Create and publish to Azure a simple HTTP triggered function by using Azure toolkit for IntelliJ. 
 ms.topic: quickstart
 ms.date: 03/26/2020
@@ -15,7 +15,7 @@ In this article, you use IntelliJ IDEA to create a function that responds to HTT
 Before you get started, make sure you have the following requirements in place:
 
 + An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-+ An [Azure supported Java Development Kit (JDK)](https://aka.ms/azure-jdks) for Java 8
++ An [Azure supported Java Development Kit (JDK)](../fundamentals/java-jdk-long-term-support.md) for Java 8
 + An [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition or Community Edition installed
 + [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 + Latest [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)
