@@ -1,8 +1,8 @@
 ---
-title: "Step 8: Clean up resources used with Python code in Azure Functions"
-description: Tutorial step 8, cleaning up Azure resources to avoid incurring ongoing changes.
+title: "Step 8: Clean up resources used with serverless Python code in Azure Functions"
+description: Tutorial step 8, cleaning up Azure resources to avoid incurring ongoing charges.
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-python, seo-python-october2019
 ---
 
@@ -10,7 +10,7 @@ ms.custom: devx-track-python, seo-python-october2019
 
 [Previous step: add a storage binding](tutorial-vs-code-serverless-python-07.md)
 
-This article shows you how to remove Azure resources created in this tutorial. The Azure Function App you created with Visual Studio Code includes resources that can incur minimal costs. (For more information, see [Functions Pricing](https://azure.microsoft.com/pricing/details/functions/).)
+The Azure Function App you created with Visual Studio Code in the course of this tutorial includes resources that can incur minimal costs. (For more information, see [Functions Pricing](https://azure.microsoft.com/pricing/details/functions/).)
 
 The best way to clean up resources is to delete the resource group that contains all the individual resources used in this tutorial. Resources include the function app, the storage account, and the backing App Service plan.
 
@@ -26,7 +26,7 @@ As noted earlier, you can learn more about the Functions extension by visiting i
 
 Read the [Azure Functions Overview](/azure/azure-functions/functions-overview) to explore the different triggers you can use.
 
-To learn more about Azure services that you can use from Python, including data storage along with AI and Machine Learning services, visit [Azure Python Developer Center](/azure/python/?view=azure-python).
+To learn more about Azure services that you can use from Python, including data storage along with AI and Machine Learning services, visit [Azure Python Developer Center](./index.yml).
 
 There are also other Azure extensions for Visual Studio Code that you may find helpful. Just search on "Azure" in the Extensions explorer:
 
@@ -40,6 +40,6 @@ Some popular extensions are:
 - [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 > [!div class="nextstepaction"]
-> [I'm done!](https://docs.microsoft.com/python/azure/?view=azure-python)
+> [I'm done!](/python/azure/?preserve-view=true&view=azure-python)
 
-Issues? Submit a GitHub issue using the "This page" feedback at the bottom of the page.
+[Having issues? Let us know.](https://aka.ms/python-functions-qs-ms-survey)

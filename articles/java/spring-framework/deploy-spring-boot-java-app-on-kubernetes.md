@@ -4,11 +4,11 @@ titleSuffix: Azure Kubernetes Service
 description: This tutorial will walk you though the steps to deploy a Spring Boot application in a Kubernetes cluster on Microsoft Azure.
 services: container-service
 documentationcenter: java
-ms.date: 11/12/2019
+ms.date: 10/06/2020
 ms.service: multiple
 ms.tgt_pltfrm: multiple
 ms.topic: article
-ms.custom: mvc, devx-track-java
+ms.custom: mvc, devx-track-java, devx-track-azurecli
 ---
 
 # Deploy Spring Boot Application to the Azure Kubernetes Service
@@ -286,13 +286,13 @@ This tutorial deploys the app using `kubectl`, then allows you to explore the de
 To learn more about Spring and Azure, continue to the Spring on Azure documentation center.
 
 > [!div class="nextstepaction"]
-> [Spring on Azure](/azure/developer/java/spring-framework)
+> [Spring on Azure](./index.yml)
 
 ### Additional Resources
 
 For more information about using Spring Boot on Azure, see the following article:
 
-* [Deploy a Spring Boot Application to the Azure App Service](deploy-spring-boot-java-app-from-container-registry-using-maven-plugin.md)
+* [Deploy a Spring Boot application to Linux on Azure App Service](deploy-spring-boot-java-app-on-linux.md)
 
 For more information about using Azure with Java, see the [Azure for Java Developers] and the [Working with Azure DevOps and Java].
 
@@ -325,7 +325,7 @@ For more information about iteratively running and debugging containers directly
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
 [Azure Command-Line Interface (CLI)]: /cli/azure/overview
 [Azure Kubernetes Service (AKS)]: https://azure.microsoft.com/services/kubernetes-service/
-[Azure for Java Developers]: /azure/developer/java/
+[Azure for Java Developers]: ../index.yml
 [Azure portal]: https://portal.azure.com/
 [Create a private Docker container registry using the Azure portal]: /azure/container-registry/container-registry-get-started-portal
 [Using a custom Docker image for Azure Web App on Linux]: /azure/app-service/tutorial-custom-container
@@ -344,7 +344,7 @@ For more information about iteratively running and debugging containers directly
 [Namespaces]: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
 [Pulling an Image from a Private Registry]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
-[Java Development Kit (JDK)]: https://aka.ms/azure-jdks
+[Java Development Kit (JDK)]: ../fundamentals/java-jdk-long-term-support.md
 <!-- http://www.oracle.com/technetwork/java/javase/downloads/ -->
 
 <!-- Newly added -->

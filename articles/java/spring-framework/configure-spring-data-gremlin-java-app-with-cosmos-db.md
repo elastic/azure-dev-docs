@@ -3,7 +3,7 @@ title: How to use the Spring Data Gremlin Starter with the Azure Cosmos DB SQL A
 description: Learn how to configure an application created with the Spring Boot Initializr with the Azure Cosmos DB SQL API.
 services: cosmos-db
 documentationcenter: java
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.service: cosmos-db
 ms.tgt_pltfrm: multiple
 ms.topic: article
@@ -13,11 +13,9 @@ ms.custom: devx-track-java
 
 # How to use the Spring Data Gremlin Starter with the Azure Cosmos DB SQL API
 
-## Overview
+This article shows how to use the Azure portal to create an Azure Cosmos DB resource for use with the Gremlin API. It then shows how to use [Spring Initializr] to create a custom Java application, and then add the Spring Data Gremlin Starter functionality to access your data using Gremlin.
 
 The Spring Data Gremlin Starter provides Spring Data support for the Gremlin query language from Apache, which developers can use with any Gremlin-compatible data store.
-
-This article demonstrates creating an Azure Cosmos DB by using the Azure portal for use with Gremlin API, then using the **[Spring Initializr]** to create a custom java application, and then add the Spring Data Gremlin Starter functionality to your custom application to store data in and retrieve data from your Azure Cosmos DB by using Gremlin.
 
 ## Prerequisites
 
@@ -91,15 +89,13 @@ The following prerequisites are required in order to follow the steps in this ar
 
 1. Browse to <https://start.spring.io/>.
 
-1. Specify that you want to generate a **Maven** project with **Java**, enter the **Group** and **Artifact** names for your application, specify your **Spring Boot** version with version 2.3.1, and then select **GENERATE**.
-
-> [!NOTE]
->
-> The Spring Initializr uses the **Group** and **Artifact** names to create the package name; for example: `com.example.wintiptoysdata`.
-
+1. Specify that you want to generate a **Maven** project with **Java**, enter the **Group** and **Artifact** names for your application, specify your **Spring Boot** version with version 2.3.4, and then select **GENERATE**.
 
    >[!div class="mx-imgBorder"]
    >![spring-initializr][spring-initializr-01]
+   
+   > [!NOTE]
+   > The Spring Initializr uses the **Group** and **Artifact** names to create the package name; for example: `com.example.wintiptoysdata`.
 
 1. When prompted, download the project to a path on your local computer.
 
@@ -161,12 +157,16 @@ We'll be replicating the configurations of the existing [Azure Spring Data Greml
    >![execute-result][execute-result-01]
 
 
+## Clean up resources
+
+When no longer needed, use the [Azure portal](https://portal.azure.com/) to delete the resources created in this article to avoid unexpected charges.
+
 ## Next steps
 
 To learn more about Spring on Azure, continue to the Spring on Azure documentation.
 
 > [!div class="nextstepaction"]
-> [Spring on Azure](/azure/developer/java/spring-framework)
+> [Spring on Azure](./index.yml)
 
 ### Additional Resources
 
@@ -192,7 +192,7 @@ For more information about using Azure Cosmos DB and Java, see the following art
 
 For more information about using Spring Boot applications on Azure, see the following articles:
 
-* [Deploy a Spring Boot Application to the Azure App Service](deploy-spring-boot-java-app-from-container-registry-using-maven-plugin.md)
+* [Deploy a Spring Boot application to Linux on Azure App Service](deploy-spring-boot-java-app-on-linux.md)
 
 * [Running a Spring Boot Application on a Kubernetes Cluster in the Azure Container Service](deploy-spring-boot-java-app-on-kubernetes.md)
 
@@ -203,7 +203,7 @@ The **[Spring Framework]** is an open-source solution that helps Java developers
 <!-- URL List -->
 
 [Azure Cosmos DB Documentation]: /azure/cosmos-db/
-[Azure for Java Developers]: /azure/developer/java/
+[Azure for Java Developers]: ../index.yml
 [Build a SQL API app with Java]: /azure/cosmos-db/create-sql-api-java 
 [Spring Data for Azure Cosmos DB SQL API]: https://azure.microsoft.com/blog/spring-data-azure-cosmos-db-nosql-data-access-on-azure/
 [Spring Data Gremlin Starter]: https://github.com/Microsoft/spring-data-gremlin
@@ -213,7 +213,7 @@ The **[Spring Framework]** is an open-source solution that helps Java developers
 [Spring Boot]: http://projects.spring.io/spring-boot/
 [Spring Initializr]: https://start.spring.io/
 [Spring Framework]: https://spring.io/
-[graph partition]: https://docs.microsoft.com/azure/cosmos-db/graph-partitioning
+[graph partition]: /azure/cosmos-db/graph-partitioning
 [azure-spring-data-sample-gremlin]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-samples/azure-spring-data-sample-gremlin
 
 <!-- IMG List -->

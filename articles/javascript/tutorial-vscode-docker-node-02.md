@@ -1,9 +1,9 @@
 ---
 title: Use a container registry from Visual Studio Code
-description: Tutorial part 2, use a container registry
-ms.topic: conceptual
+description: Docker Tutorial part 2, use a container registry
+ms.topic: tutorial
 ms.date: 09/20/2019
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ---
 
 # Use a container registry
@@ -16,7 +16,7 @@ This tutorial uses [Azure Container Registry](https://azure.microsoft.com/servic
 
 ## Create an Azure container registry
 
-1. In Visual Studio Code, select **F1** to open the command palette.
+1. In Visual Studio Code, select **F1** or **CTRL+SHIFT+P** to open the command palette.
 
 1. Enter **registry** in the search box. From the results, select **Azure Container Registry: Create Registry**.
 

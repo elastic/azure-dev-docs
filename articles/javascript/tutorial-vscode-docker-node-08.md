@@ -1,9 +1,9 @@
 ---
 title: Clean up resources after deploying a containerized Node.js app from Visual Studio Code
-description: Tutorial part 8, clean up resources
-ms.topic: conceptual
+description: Docker Tutorial part 8, clean up resources
+ms.topic: tutorial
 ms.date: 09/20/2019
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ---
 
 # Part 8 Clean up resources
@@ -19,4 +19,4 @@ You can also visit the [Azure portal](https://portal.azure.com), select **Resour
 [!INCLUDE [tutorial-next-steps](includes/tutorial-next-steps.md)]
 
 > [!div class="nextstepaction"]
-> [I'm done](node-howto-deploy-containers.md) [I ran into an issue](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-docker-extension&step=clean-up-resources)
+> [I'm done](./how-to/deploy-containers.md) [I ran into an issue](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-docker-extension&step=clean-up-resources)

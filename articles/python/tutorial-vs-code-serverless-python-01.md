@@ -1,34 +1,38 @@
 ---
 title: "Tutorial: Create and deploy serverless Azure Functions in Python with VS Code"
-description: Tutorial step 1, working with Azure Functions, introduction and prerequisites.
+description: Tutorial step 1, configure your local environment for serverless Azure Functions
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-python, seo-python-october2019
 ---
 
 # Tutorial: Create and deploy serverless Azure Functions in Python with Visual Studio Code
 
-In this article, you use Visual Studio Code and the Azure Functions extension to create a serverless HTTP endpoint with Python and to also add a connection (or "binding") to storage.
+In this article, you use Visual Studio Code and the Azure Functions extension to create a "serverless" HTTP endpoint with Python and to also add a connection (or "binding") to storage. The Azure Functions extension for Visual Studio Code greatly simplifies the process of using Functions by automatically handling many configuration concerns.
 
-Azure Functions runs your code in a serverless environment without needing to provision a virtual machine or publish a web app. The Azure Functions extension for Visual Studio Code greatly simplifies the process of using Functions by automatically handling many configuration concerns.
+The serverless environment of Azure Functions means that Azure presents your app's endpoints and public URLs without your needing to provision a virtual machine, publish a web app, or otherwise manage servers and resources. Azure efficiently manages all those resources for you, which significantly reduces the overhead and cost of hosting your application. (For more information, see the [Azure Functions overview](/azure/azure-functions/functions-overview).)
 
-If you encounter issues with any of the steps in this tutorial, we'd love to hear the details. Use the **I ran into an issue** button at the end of each article to submit feedback.
+If you encounter issues with any of the steps in this tutorial, we'd love to hear the details. Use the **This page** feedback button at the end of each article.
 
-For a demonstration video, see <a href="https://www.youtube.com/watch?v=9bMsdBYy-D0&feature=youtu.be&ocid=AID3006292" target="_blank">Build Azure Functions with VS Code</a> (youtube.com) from virtual PyCon 2020. You might also be interested in the longer session, <a href="https://www.youtube.com/watch?v=PV7iy6FPjAY&feature=youtu.be&t=13&ocid=AID3006292" target="_blank">Easy data processing with Azure Functions</a> (youtube.com). 
+For a demonstration video, see <a href="https://www.youtube.com/watch?v=9bMsdBYy-D0&feature=youtu.be&ocid=AID3006292" target="_blank">Build Azure Functions with VS Code</a> (youtube.com) from virtual PyCon 2020. You might also be interested in the longer session, <a href="https://www.youtube.com/watch?v=PV7iy6FPjAY&feature=youtu.be&t=13&ocid=AID3006292" target="_blank">Easy data processing with Azure Functions</a> (youtube.com).
 
-## Prerequisites
+## Configure your environment
 
-- An [Azure subscription](#azure-subscription).
-- The [Azure Functions Core Tools](#azure-functions-core-tools).
-- [Visual Studio Code with the Azure Functions extension](#visual-studio-code-python-and-the-azure-functions-extension).
+- If you don't have an Azure account with an active subscription, [create one for free](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-functions-extension&mktingSource=vscode-tutorial-functions-extension).
 
-### Azure subscription
+- Follow the instructions in the sections that follow:
 
-If you don't have an Azure subscription, [sign up now](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-functions-extension&mktingSource=vscode-tutorial-functions-extension) for a free 30-day account with $200 in Azure credits to try out any combination of services.
+  - [Install the Azure Functions Core Tools](#azure-functions-core-tools).
 
+  - [Install Python and Visual Studio Code with the Azure Functions extension](#visual-studio-code-python-and-the-azure-functions-extension).
+
+  - [Sign in to Azure](#sign-in-to-azure)
+
+  - [Verify your environment](#verify-your-environment)
+ 
 ### Azure Functions Core Tools
 
-Install the Azure Functions Core Tools by following the instructions for your operating system on [Work with Azure Functions Core Tools](/azure/azure-functions/functions-run-local#v2). Ignore the comments in the article about the Chocolatey package manager, which are not necessary to complete this tutorial.
+Follow the instructions for your operating system on [Work with Azure Functions Core Tools](/azure/azure-functions/functions-run-local#v2). Ignore the comments in the article about the Chocolatey package manager, which are not necessary to complete this tutorial.
 
 When installing Node.js, use the default options and do *not* select the option to automatically install necessary tools.  Also be sure to use the `-g` option with the `npm install` commands so that the Core Tools are available to subsequent commands.
 
@@ -49,9 +53,19 @@ Install the following software:
 
 ### Sign in to Azure
 
-[!INCLUDE [azure-sign-in](includes/azure-sign-in.md)]
+Once you've installed the Azure extension, sign into your Azure account by navigating to the **Azure** explorer, select **Sign in to Azure** under **Functions**, and follow the prompts in the browser.
 
-### Verify prerequisites
+![Sign in to Azure through VS Code](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
+
+After signing in, verify that the status bar says **Azure: Signed In** and your subscription(s) appears in the **Azure** explorer:
+
+![Visual Studio Code status bar showing Azure account](media/tutorial-vs-code-serverless-python/azure-account-status-bar.png)
+
+![Visual Studio Code Azure App Service explorer showing subscriptions](media/tutorial-vs-code-serverless-python/azure-subscription-view.png)
+
+[!INCLUDE [proxy-config](includes/proxy-config.md)]
+
+### Verify your environment
 
 To verify that all the Azure Functions tools are installed, open the Visual Studio Code Command Palette (**F1**), select the **Terminal: Create New Integrated Terminal** command, and once the terminal opens, run the command `func`:
 
@@ -66,4 +80,4 @@ The `func` command works through the *func.cmd* file that's installed in the Nod
 > [!div class="nextstepaction"]
 > [I signed into Azure - continue to step 2 >>>](tutorial-vs-code-serverless-python-02.md)
 
-Issues? Submit a GitHub issue using the "This page" feedback at the bottom of the page.
+[Having issues? Let us know.](https://aka.ms/python-functions-qs-ms-survey)

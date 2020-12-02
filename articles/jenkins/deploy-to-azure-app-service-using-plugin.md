@@ -4,7 +4,7 @@ description: Learn how to use the Azure App Service Jenkins plugin to deploy a J
 keywords: jenkins, azure, devops, app service
 ms.topic: tutorial
 ms.date: 08/10/2018
-ms.custom: devx-track-jenkins
+ms.custom: devx-track-jenkins, devx-track-azurecli
 ---
 
 # Tutorial: Deploy to Azure App Service using the Jenkins plugin
@@ -275,4 +275,4 @@ If you encounter any bugs with the Jenkins plugins, file an issue in the [Jenkin
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Jenkins on Azure](/azure/developer/jenkins)
+> [Jenkins on Azure](./index.yml)

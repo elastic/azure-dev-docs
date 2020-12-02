@@ -1,9 +1,9 @@
 ---
 title: Clean up resources after deploying to Azure App Service into Visual Studio Code
-description: Tutorial part 5, clean up resources
-ms.topic: conceptual
+description: Node.js Tutorial part 5, clean up resources
+ms.topic: tutorial
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ---
 
 # Part 5: Clean up resources
@@ -19,4 +19,4 @@ When you want to clean up the resources, visit the [Azure portal](https://portal
 [!INCLUDE [tutorial-next-steps](includes/tutorial-next-steps.md)]
 
 > [!div class="nextstepaction"]
-> [I'm done](node-howto-deploy-web-app.md) [I ran into an issue](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azureappservice&step=clean-up-resources)
+> [I'm done](./how-to/deploy-web-app.md) [I ran into an issue](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azureappservice&step=clean-up-resources)

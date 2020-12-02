@@ -18,7 +18,7 @@ This tutorial covers several possible ways of setting up your Jenkins environmen
    * [Install the Service Fabric plugin in an existing Jenkins environment](#install-service-fabric-plugin-in-an-existing-jenkins-environment).
 1. After you've set up Jenkins, follow the steps in [Create and configure a Jenkins job](#create-and-configure-a-jenkins-job) to set up GitHub to trigger Jenkins when changes are made to your application and to configure your Jenkins job pipeline through the build step to pull the changes from GitHub and build your application. 
 1. Finally, configure the Jenkins job post-build step to deploy your application to your Service Fabric cluster. There are two ways to configure Jenkins to deploy your application to a cluster:    
-   * For development and test environments, use [Configure deployment using cluster management endpoint](#configure-deployment-using-cluster-management-endpoint). This is the simplest deployment method to set up.
+   * For development and test environments, use [Configure deployment using cluster management endpoint](#configure-deployment-using-cluster-management-endpoint). This method is the simplest deployment method to set up.
    * For production environments, use [Configure deployment using Azure credentials](#configure-deployment-using-azure-credentials). Microsoft recommends this method for production environments because with Azure credentials you can limit the access that a Jenkins job has to your Azure resources. 
 
 ## Prerequisites
@@ -219,7 +219,7 @@ The steps in this section show you how to configure a Jenkins job to respond to 
 
      The following screenshot shows an example of the commands that are used to build the [Counter Service](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started/tree/master/Services/CounterService) sample with a Jenkins job name of `CounterServiceApplication`.
 
-      ![Service Fabric Jenkins Build action](./media/deploy-to-service-fabric-cluster/build-step-dotnet.png)
+      ![Example of commands used to build the service](./media/deploy-to-service-fabric-cluster/build-step-dotnet.png)
 
 1. To configure Jenkins to deploy your app to a Service Fabric cluster in the post-build actions, you need the location of that cluster's certificate in your Jenkins container. Choose one of the following depending on whether your Jenkins container is running inside or outside of your cluster and note the location of the cluster certificate:
 
@@ -275,12 +275,12 @@ For production environments, configuring an Azure credential to deploy your appl
 
 For development and test environments, you can configure either Azure credentials or the cluster management endpoint to deploy your application. For details about how to configure a cluster management endpoint, see [Configure deployment using cluster management endpoint](#configure-deployment-using-cluster-management-endpoint).   
 
-1. To create an Azure Active Directory service principal and assign it permissions in your Azure subscription, follow the steps in [Use the portal to create an Azure Active Directory application and service principal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Pay attention to the following:
+1. To create an Azure Active Directory service principal and assign it permissions in your Azure subscription, follow the steps in [Use the portal to create an Azure Active Directory application and service principal](/azure/azure-resource-manager/resource-group-create-service-principal-portal). Pay attention to the following:
 
    * While following the steps in the topic, be sure to copy and save the following values: *Application ID*, *Application key*, *Directory ID (Tenant ID)*, and *Subscription ID*. You need them to configure the Azure credentials in Jenkins.
-   * If you don't have the [required permissions](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) on your directory, you'll need to ask an administrator to either grant you the permissions or create the service principal for you, or you'll need to configure the management endpoint for your cluster in the **Post-Build Actions** for your job in Jenkins.
-   * In the [Create an Azure Active Directory application](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) section, you can enter any well-formed URL for the **Sign-on URL**.
-   * In the [Assign application to a Role](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) section, you can assign your application the *Reader* role on the resource group for your cluster.
+   * If you don't have the [required permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) on your directory, you'll need to ask an administrator to either grant you the permissions or create the service principal for you, or you'll need to configure the management endpoint for your cluster in the **Post-Build Actions** for your job in Jenkins.
+   * In the [Create an Azure Active Directory application](/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) section, you can enter any well-formed URL for the **Sign-on URL**.
+   * In the [Assign application to a Role](/azure/azure-resource-manager/resource-group-create-service-principal-portal) section, you can assign your application the *Reader* role on the resource group for your cluster.
 
 1. Back in the Jenkins job, click the **Post-build Actions** tab.
 1. From the **Post-Build Actions** drop-down, select **Deploy Service Fabric Project**. 

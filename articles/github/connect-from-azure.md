@@ -5,20 +5,20 @@ author: N-Usha
 ms.author: ushan 
 ms.topic: reference
 ms.service: azure 
-ms.date: 08/31/2020
-ms.custom: github-actions-azure
+ms.date: 11/17/2020
+ms.custom: github-actions-azure, devx-track-azurecli
 ---
 
 # Use GitHub Actions to connect to Azure
 
 Learn how to use [Azure login](https://github.com/Azure/login) with either [Azure PowerShell](https://github.com/Azure/PowerShell) or [Azure CLI](https://github.com/Azure/CLI) to interact with your Azure resources.
 
-To use Azure PowerShell or Azure CLI, you need to first log in with the [Azure login](https://github.com/marketplace/actions/azure-login). 
-The Azure login action connects your Azure subscription to GitHub using a service principal.
+To use Azure PowerShell or Azure CLI in a GitHub Actions workflow, you need to first log in with the [Azure login](https://github.com/marketplace/actions/azure-login) action.
+The Azure login action allows you to execute commands in a workflow in the context of an [Azure AD service principal](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object).
 
-Once you have set up login action, you can then use Azure CLI or Azure PowerShell.  
-Azure CLI sets up the GitHub action runner environment for Azure CLI. Azure PowerShell sets up the GitHub action runner environment with the Azure PowerShell module.
+Once you have set up the login action, you can then use Azure CLI or Azure PowerShell.
 
+By default, the action logs in with the Azure CLI, setting up the GitHub action runner environment for Azure CLI. You can use Azure PowerShell with `enable-AzPSSession` property of the Azure login action. This sets up the GitHub action runner environment with the Azure PowerShell module.
 
 ## Create a service principal and add it to GitHub secret
 
@@ -26,7 +26,7 @@ To use [Azure login](https://github.com/marketplace/actions/azure-login), you fi
 
 In this example, you will create a secret named `AZURE_CREDENTIALS` that you can use to authenticate with Azure.  
 
-1. If you do not have an existing application, register a [new Active Directory application](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#register-an-application-with-azure-ad-and-create-a-service-principal&preserve-view=true) to use with your service principal.
+1. If you do not have an existing application, register a [new Active Directory application](/azure/active-directory/develop/howto-create-service-principal-portal#register-an-application-with-azure-ad-and-create-a-service-principal&preserve-view=true) to use with your service principal.
 
     ```azurecli-interactive
         appName="myApp"
@@ -37,7 +37,7 @@ In this example, you will create a secret named `AZURE_CREDENTIALS` that you can
         --identifier-uris http://localhost/$appName
     ```
 
-1. [Create a new service principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) in the Azure portal for your app. 
+1. [Create a new service principal](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true) in the Azure portal for your app. 
 
     ```azurecli-interactive
         az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -73,11 +73,11 @@ In this example, you will create a secret named `AZURE_CREDENTIALS` that you can
 
 ## Use the Azure login action
 
-Use the service principal secret with the [Azure Login action](https://github.com/Azure/login) to authenticate with Azure.
+Use the service principal secret with the [Azure Login action](https://github.com/Azure/login) to authenticate to Azure.
 
-In this workflow, you authenticate with `secrets.AZURE_CREDENTIALS` and then run an Azure CLI action.
+In this workflow, you authenticate using the Azure login action with the service principal details stored in `secrets.AZURE_CREDENTIALS`. Then, you run an Azure CLI action. For more information about referencing GitHub secrets in a workflow file, see [Using encrypted secrets in a workflow](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#using-encrypted-secrets-in-a-workflow) in GitHub Docs.
 
-Once you have a working Azure login, you can use the Azure PowerShell or Azure CLI actions. You can also use other Azure actions like [Azure webapp deploy](https://github.com/Azure/webapps-deploy) and [Azure functions](https://github.com/Azure/functions-action).
+Once you have a working Azure login step, you can use the [Azure PowerShell](https://github.com/Azure/PowerShell) or [Azure CLI](https://github.com/Azure/CLI) actions. You can also use other Azure actions, like [Azure webapp deploy](https://github.com/Azure/webapps-deploy) and [Azure functions](https://github.com/Azure/functions-action).
 
 ```yaml
 on: [push]
@@ -96,7 +96,7 @@ jobs:
 
 ## Use the Azure PowerShell action
 
-In this example, you log in with the [Azure Login action](https://github.com/Azure/login) and then retrieve a resource group with the [Azure CLI action](https://github.com/azure/powershell).
+In this example, you log in with the [Azure Login action](https://github.com/Azure/login) and then retrieve a resource group with the [Azure PowerShell action](https://github.com/azure/powershell).
 
 ```yaml
 on: [push]
@@ -154,19 +154,19 @@ The following articles provide details on connecting to GitHub from Azure and ot
 
 ### Azure Active Directory 
 
-- [Sign in to GitHub Enterprise with Azure AD (single sign-on)](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)   
+- [Sign in to GitHub Enterprise with Azure AD (single sign-on)](/azure/active-directory/saas-apps/github-tutorial)   
 
 ### Power BI
 
-- [Connect Power BI with GitHub](https://docs.microsoft.com/power-bi/service-connect-to-github)   
+- [Connect Power BI with GitHub](/power-bi/service-connect-to-github)   
 
 ### Connectors
 
-- [GitHub connector for Azure Logic Apps, Power Automate and Power Apps](https://docs.microsoft.com/connectors/github/)   
+- [GitHub connector for Azure Logic Apps, Power Automate and Power Apps](/connectors/github/)   
 
 ### Azure Databricks
 
-- [Use GitHub as version control for notebooks](https://docs.microsoft.com/azure/databricks/notebooks/github-version-control) 
+- [Use GitHub as version control for notebooks](/azure/databricks/notebooks/github-version-control) 
 
 > [!div class="nextstepaction"]
 > [Deploy apps from GitHub to Azure](deploy-to-azure.md)
