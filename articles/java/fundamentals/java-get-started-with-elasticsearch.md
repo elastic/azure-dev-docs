@@ -220,9 +220,11 @@ You can review the logs by running the following command.
 `docker logs <container ID>`
 
 With Kibana open, and from the Observability home page, you should see logs already coming in.
+
 ![Logs](media/java-get-started-with-elasticsearch/logs.png)
 
 Click **View in app**.
+
 ![View in app](media/java-get-started-with-elasticsearch/view-in-app_sm.png)
 
 Notice the log histogram depicting the volume of logs being ingested. Oftentimes, a large amount of logs in a short time period can indicate an issue.
@@ -230,9 +232,11 @@ Notice the log histogram depicting the volume of logs being ingested. Oftentimes
 ![Log Histogram](media/java-get-started-with-elasticsearch/histogrm.png)
 
 Click **Anomalies** when you are ready to set up machine learning alerts, helping to further identify potential problems, before they become issues.
+
 ![Anomalies](media/java-get-started-with-elasticsearch/anomalies_sm.png)
 
 Next, from the navigation menu click **Discover**.
+
 ![Discover](media/java-get-started-with-elasticsearch/discover_sm.png)
 
 Notice the graph chart showing log count…
@@ -240,7 +244,8 @@ Notice the graph chart showing log count…
 ![Discover Graph](media/java-get-started-with-elasticsearch/discover-graph.png)
 
 Notice that you can filter on the **Available fields** which will refine the data displayed.
-Click **container.name** and notice it only lists **filebeat** for now. Feel free to expand the ingested data and notice you can visualize it in table or raw JASON formats.
+
+Click **container&#46;name** and notice it only lists **filebeat** for now. Feel free to expand the ingested data and notice you can visualize it in table or raw JASON formats.
 
 ![Filebeat container](media/java-get-started-with-elasticsearch/filebeat-container_sm.png)
 
