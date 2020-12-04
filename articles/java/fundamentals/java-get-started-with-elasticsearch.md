@@ -67,7 +67,7 @@ You can name your new deployment **OpBeans** to help identify this setup.
 > It is best practice to **create a dedicated user** to be used for this configuration process, rather than the `elastic` user, however, the `elastic` user can be used to get started.
 > Please refer to the [Grant user access to secured resources](https://www.elastic.co/guide/en/beats/filebeat/current/feature-roles.html) documentation for more details on creating users to setup, monitor, and write Beats, the minimum roles needed for this user.
 
-##Launch Kibana
+## Launch Kibana
 Once Kibana is launched you will need to start from the Observability page.
 
 ![Observability Home Page](media/java-get-started-with-elasticsearch/obs-home.png)
