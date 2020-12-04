@@ -15,7 +15,6 @@ This tutorial shows you how to configure **Elastic Cloud (Elasticsearch managed 
 In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
-> * Deploy an Elastic Cloud Elasticsearch managed service cluster on Azure.
 > * Deploy Filebeat and Elastic APM Java Agent using Docker, which will send the OpBeans eCommerce logs and APM traces to Elasticsearch hosted on Microsoft Azure.
 > * Deploy OpBeans, a Spring Boot demo application that simulates a working Java eCommerce application.
 > * Visualize the Java application logs and metrics in Kibana, including outlining how to investigate a simulated error.
@@ -58,9 +57,9 @@ OpenSSL version: OpenSSL 1.1.0f  25 May 2017
 ```
 
 ## Spinning up an Elasticsearch Cluster
-Get started with **Elastic Cloud on Azure** from the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure) using your existing Azure account. This provides integrated billing and stress free management.
+Get started with **Elastic on Azure** from the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure) using your existing Azure account. This provides integrated billing and stress free management.
 
-Please refer to the [How to Deploy Elastic Cloud on Microsoft Azure](https://cloudblogs.microsoft.com/opensource/2020/10/21/how-to-deploy-elastic-cloud-microsoft-azure) for the steps to deploy Elastic on Azure with the exception of using the Sample Data - we will instead use our own data.
+Please refer to the [How to Deploy Elastic Cloud on Microsoft Azure](https://cloudblogs.microsoft.com/opensource/2020/10/21/how-to-deploy-elastic-cloud-microsoft-azure) for the steps to deploy Elastic on Azure with the exception of using the Sample Data steps as we will instead be using our own data.
 
 You can name your new deployment **OpBeans** to help identify this setup.
 
