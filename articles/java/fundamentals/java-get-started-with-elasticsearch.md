@@ -72,8 +72,8 @@ Once Kibana is launched you will need to start from the Observability page.
 
 ![Observability Home Page](media/java-get-started-with-elasticsearch/obs-home.png)
 
-## Setting up OpBeans
-Frist, we must setup Filebeat, the Elastic APM Agent, and a simulated Java eCommerce environment, **OpBeans**, in order to provide guidance steps you can simulate in your own environment.
+## Setting up the Environment
+We will first setup Filebeat, the Elastic APM Agent, and then a simulated Java eCommerce environment, **OpBeans**, in order to provide the steps you can simulate in your own environment.
 
 This solution tutorial uses [Docker](https://www.docker.com) containers with a Linux based system (see the prerequisites for more details), providing a rapid and robust solution for such environments.
 
