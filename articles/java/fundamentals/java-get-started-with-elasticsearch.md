@@ -75,7 +75,7 @@ Once Kibana is launched you will need to start from the Observability page.
 ## Setting up the Environment
 We will first setup Filebeat, the Elastic APM Agent, and then a simulated Java eCommerce environment, **OpBeans**, in order to provide the steps you can simulate in your own environment.
 
-This solution tutorial uses [Docker](https://www.docker.com) containers with a Linux based system (see the prerequisites for more details), providing a rapid and robust solution for such environments.
+This solution tutorial uses [Docker](https://www.docker.com) containers with a Linux based system (see the *Prerequisites* section for more details), providing a rapid and robust solution for such environments.
 
 The process is similar when running locally or on a different type of system. Simply refer to the [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/index.html) and [Elastic APM Java Agent](https://www.elastic.co/guide/en/apm/get-started/current/index.html) documentation for more details on getting started.
 
@@ -88,6 +88,7 @@ In order to utilize system set variables on Linux based systems, set by the curr
 These two steps do not apply to Windows systems.
 
 If these steps are not performed, or you are unable to allow this, then you will need to use sudo for all docker commands, and then hard set variables, as running docker with sudo will not pick up user set variables.
+
 Create the docker group by running:
 
 ```
@@ -141,16 +142,18 @@ This process will download, install, and configure Filebeat which will load pred
 > The process for setting up Filebeat outside of using containers, simply by following the [Filebeat Quickstart Guide](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html).
 > You can therefore skip this first part and jump to the ***Creating the Filebeat configuration file*** section once Filebeat has been deployed on your standalone system.
 
-Run the following commands. You can reference relative steps on Elastic’s [Filebeat on Docker](https://www.elastic.co/guide/en/beats/filebeat/current/running-on-docker.html) documentation.
+Run the following commands as you see, if having been able to set environment variables. Otherwise, you can replace the variables in these commands with the variables themselves.
 
-The command below has been modified slightly due to the use of a Elastic Cloud deployment, versus a local deployment.
+You can also reference relative steps on Elastic’s [Filebeat on Docker](https://www.elastic.co/guide/en/beats/filebeat/current/running-on-docker.html) documentation.
+
+The command below takes into account the use of an **Elastic Cloud** deployment, versus a local deployment.
 ```
 docker run \
-docker.elastic.co/beats/filebeat:7.9.3 \
+docker.elastic.co/beats/filebeat:7.10.0 \
 setup -E cloud.id=$CLOUD_ID -E cloud.auth=$ELASTICSEARCH_USERNAME:$ELASTICSEARCH_PASSWORD
 ```
 
-Output should look similar to the following:
+The output should look similar to the following:
 ```
 Index setup finished.
 Loading dashboards (Kibana must be running and reachable)
@@ -189,6 +192,7 @@ The file above takes into account three variables set in in the *Preliminary Ste
 #### Running Filebeat
 This step will start Filebeat within the container, with the previously configured configuration file. This will essentially copy it from your local host to the proper location within the container.
 Refer to the Filebeat documentation once again, if you are not using the container method, as you must use `setup` and `start` commands, which are quite different.
+
 From your host, run the following:
 ```
 docker run -d \
@@ -200,10 +204,11 @@ docker run -d \
 --volume="$(pwd)/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro" \
 --volume="/var/lib/docker/containers:/var/lib/docker/containers:ro" \
 --volume="/var/run/docker.sock:/var/run/docker.sock:ro" \
-docker.elastic.co/beats/filebeat:7.9.3 filebeat -e -strict.perms=false
+docker.elastic.co/beats/filebeat:7.10.0 filebeat -e -strict.perms=false
 ```
 #### Validate Filebeat
 At this point, you should see the container running and be able to see some logs from Filebeat within Kibana.
+
 Run the following commands to see Filebeat running in the container.
 
 `docker ps`
@@ -211,7 +216,7 @@ Run the following commands to see Filebeat running in the container.
 You will see output such as the following.
 ```
 CONTAINER ID   IMAGE                 COMMAND         CREATED  STATUS   PORTS    NAMES
-fd5b24e0b4dd   doc~/filebeat:7.9.3   "/usr/~/dock…"   7 sec~  Up 5 sec~       filebeat
+fd5b24e0b4dd   doc~/filebeat:7.10.0   "/usr/~/dock…"   7 sec~  Up 5 sec~       filebeat
 ```
 
 You can review the logs by running the following command.
@@ -294,8 +299,10 @@ services:
 
 #### Running OpBeans
 Everything is loaded and ready for runtime. This means that after running the following command, an eCommerce Java based application will be running, for which can be accessed via. a web browser.
+
 Run the following command to start the OpBeans application.
-docker-compose -f docker-compose-opbeans-only.yml up
+
+```docker-compose -f docker-compose-opbeans-only.yml up```
 
 #### Validating OpBeans
 Validate that the OpBeans eCommerce application is running by navigating to the IP address using port 8000. This would be the publicly assigned IP Azure provides, rather than the internal one provided with the previous configuration file.
@@ -313,7 +320,7 @@ You can also visualize the OpBeans container now in Kibana. Recall the previous 
 
 ![Discover two containers](media/java-get-started-with-elasticsearch/fb-ob-containers.png)
 
-### Adding APM Agent to your environment
+### Adding the APM Java Agent to your environment
 There are essentially three ways a Java developer can set up the Elastic APM Java Agent in their own environment. This tutorial's package attaches to the JVM as a standalone application using `apm-agent-attach-standalone.jar`.
 
 There have been no custom code snippets defined to tell APM what to do; no custom instrumentation has been performed. The solution used in this tutorial is completely out-of-the-box.
@@ -321,7 +328,8 @@ There have been no custom code snippets defined to tell APM what to do; no custo
 Please refer to the [Set up the Agent](https://www.elastic.co/guide/en/apm/agent/java/current/setup.html) documentation for more details.
 
 ## Visualizing APM Traces
-Now that Filebeat and OpBeans are running, it is time to visualize logs and traces in Kibana. We will also simulate an error, to understand where to visualize that data, to help drive a resolution to the identified problem.
+Now that Filebeat and OpBeans are running, it is time to visualize logs and traces in Kibana. We will also simulate an error to understand where to visualize that data; to help drive a resolution to the identified problem.
+
 From the Home page in Kibana, click **APM**.
 ![APM](media/java-get-started-with-elasticsearch/apm_sm.png)
 
@@ -329,7 +337,7 @@ Click the **opbeans-java** service and notice the various predeveloped trace vis
 
 ![APM Java Dashboard](media/java-get-started-with-elasticsearch/apm-java-dashboard.png)
 
-The **Time spent by span type** displays where applications are spending the most time, such as on internal resources, a database, or external calls for example.
+The **Time spent by span type** chart displays where applications are spending the most time, such as on internal resources, a database, or external calls for example.
 
 ![Time spent by span type](media/java-get-started-with-elasticsearch/time-spent.png)
 
@@ -337,7 +345,7 @@ The **Transaction duration** chart displays response times.
 
 ![Transaction duration](media/java-get-started-with-elasticsearch/duration.png)
 
-**Requests per minute** displays what response codes are being encountered most often.
+The **Requests per minute** chart displays what response codes are being encountered most often.
 
 ![Requests](media/java-get-started-with-elasticsearch/requests.png)
 
@@ -357,16 +365,17 @@ You will see the following error:
 ![Something went wrong](media/java-get-started-with-elasticsearch/bug.png)
 
 ### Analysing the bug
-Now from within Kibana, click the **Errors** tab from the **opbeans-java** service page.
+Within Kibana, click the **Errors** tab from the **opbeans-java** service page.
 
 ![Demo exception](media/java-get-started-with-elasticsearch/demo-exception.png)
 
-Noice the Group ID, type, and error output. Click **Demo exception** which will take you to the stack trace where you can see all the exceptions. Clicking the **Metadata** tab will provide many details including the URL where the exception took place.
-Now click **View 1 occurrence in Discover**.
+Noice the Group ID, type, and error output. Clicking **Demo exception** will take you to the stack trace where you can see all the exceptions. Clicking the **Metadata** tab will provide many details including the URL where the exception took place.
+
+Click **View 1 occurrence in Discover**.
 
 ![View in Discover](media/java-get-started-with-elasticsearch/view-in-discover_sm.png)
 
-Expand the details and notice the metadata that points to this error culprit, which you can filter on by clicking the plus sign.
+Expand the details and notice the metadata that points to this `error.culprit`, which you can filter on by clicking the plus sign.
 
 ![Error culprit](media/java-get-started-with-elasticsearch/error-culprit.png)
 
@@ -377,6 +386,6 @@ Simply click **View surrounding documents**.
 ![Surrounding documents](media/java-get-started-with-elasticsearch/surrounding-docs.png)
 
 ## Summary
-In this tutorial, you learned that spinning up an Elastic Cloud Elasticsearch managed service cluster on Azure is straightforward and follows along with deploying other resources, such as the virtual machine used for deploying Filebeat and the OpBeans Java environment using pre-loaded Docker Engine and Docker Compose.
+In this tutorial, you learned that spinning up an Elastic Cloud (Elasticsearch managed service) cluster on Azure is straightforward and follows along with deploying other resources, such as the virtual machine used for deploying Filebeat and the OpBeans Java environment using pre-loaded Docker Engine and Docker Compose.
 
 Take advantage of the [free training](https://www.elastic.co/learn) resources and be sure to visit [Elastic Discuss](https://discuss.elastic.co) where Elasticians, contributors, and end users alike discuss topics of your interest. It is a great way to collaborate and be an active part of the Elastic community.
